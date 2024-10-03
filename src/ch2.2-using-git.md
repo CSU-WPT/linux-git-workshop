@@ -8,6 +8,8 @@ In our case main will be our master repository. This is the main code that will 
 
 ### Branches
 
+Branches allow you to work on different versions of your project simultaneously without affecting the main codebase
+
 From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.
 
 Use this command to create a new branch:

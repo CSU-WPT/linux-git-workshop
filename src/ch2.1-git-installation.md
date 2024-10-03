@@ -2,9 +2,11 @@
 
 ## Linux
 
-Install it using your favourite package manager.
+On linux _Ubuntu_ you can use the following package
 
 `$ sudo apt-get install git-all`
+
+For other Linux distros you can use the same name for the package `git-all`
 
 ## MacOS
 
