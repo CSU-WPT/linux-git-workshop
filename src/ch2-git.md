@@ -1,4 +1,4 @@
-# What is Git? Why Git?
+# What is Git?
 
 ### Version control
 

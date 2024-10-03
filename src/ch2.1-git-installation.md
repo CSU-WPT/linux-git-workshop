@@ -2,9 +2,25 @@
 
 ## Linux
 
-Install it using your favourite package manager.
+Install it using your favorite package manager.
 
-`$ sudo apt-get install git-all`
+#### Debian / Ubuntu (apt)
+
+```bash
+sudo apt-get install git-all
+```
+
+#### Fedora (dnf)
+
+```bash
+sudo dnf install git
+```
+
+#### Arch (pacman)
+
+```bash
+sudo pacman -S git
+```
 
 ## MacOS
 
