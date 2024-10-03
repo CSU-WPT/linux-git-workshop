@@ -11,4 +11,3 @@ It basically takes a picture of what your files look like at the moment and stor
 Lets say that you need to work on a coding project with your lab partner. How can both of you work on the same codebase?
 
 Git makes this possible
-

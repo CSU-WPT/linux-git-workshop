@@ -22,6 +22,8 @@ sudo dnf install git
 sudo pacman -S git
 ```
 
+For other Linux distros you can use the same name for the package `git-all`
+
 ## MacOS
 
 MacOS will already have git installed by default.
