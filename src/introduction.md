@@ -10,15 +10,15 @@ During this workshop, we seek to answer the following questions for Linux:
 - [What is a Linux distribution ("distro")?](./ch1-linux.md#what-is-a-linux-distribution)
 - [What is a Desktop Environment?](./ch1-linux.md#what-is-a-desktop-environment)
 - [Why should I care about Linux?](./ch1-linux.md#why-should-i-care-about-linux)
-- How do you install popular Linux distros like Ubuntu, Debian, Mint, Fedora, and others?
-- How to use the terminal
+- [How do you install popular Linux distros like Ubuntu, Debian, Mint, Fedora, and others?](./ch1.1-linux-installation.md)
+- [How to use the terminal](./ch1.2-linux-terminal.md)
 
 And for git:
 
-- [What is git? Why Git?](./ch2-git.md)
-- Why is it important? What are the use cases?
-- How do you install git (on Windows, MasOS, and Linux)?
-- How do you use git from the terminal?
+- [What is git?](./ch2-git.md)
+- [Why is it important? What are the use cases?](./ch2-git.md#use-cases)
+- [How do you install git (on Windows, MasOS, and Linux)?](./ch2.1-git-installation.md)
+- [How do you use git from the terminal?](./ch2.2-using-git.md)
 - Git in VSCode
 
 
