@@ -191,15 +191,15 @@
 <li><a href="./ch1-linux.html#what-is-a-linux-distribution">What is a Linux distribution ("distro")?</a></li>
 <li><a href="./ch1-linux.html#what-is-a-desktop-environment">What is a Desktop Environment?</a></li>
 <li><a href="./ch1-linux.html#why-should-i-care-about-linux">Why should I care about Linux?</a></li>
-<li>How do you install popular Linux distros like Ubuntu, Debian, Mint, Fedora, and others?</li>
-<li>How to use the terminal</li>
+<li><a href="./ch1.1-linux-installation.html">How do you install popular Linux distros like Ubuntu, Debian, Mint, Fedora, and others?</a></li>
+<li><a href="./ch1.2-linux-terminal.html">How to use the terminal</a></li>
 </ul>
 <p>And for git:</p>
 <ul>
-<li><a href="./ch2-git.html">What is git? Why Git?</a></li>
-<li>Why is it important? What are the use cases?</li>
-<li>How do you install git (on Windows, MasOS, and Linux)?</li>
-<li>How do you use git from the terminal?</li>
+<li><a href="./ch2-git.html">What is git?</a></li>
+<li><a href="./ch2-git.html#use-cases">Why is it important? What are the use cases?</a></li>
+<li><a href="./ch2.1-git-installation.html">How do you install git (on Windows, MasOS, and Linux)?</a></li>
+<li><a href="./ch2.2-using-git.html">How do you use git from the terminal?</a></li>
 <li>Git in VSCode</li>
 </ul>
 <h3 id="workshop-recording"><a class="header" href="#workshop-recording">Workshop Recording</a></h3>
@@ -564,12 +564,24 @@ To search for a string in a file, use <code>grep</code>:
 <p>Unix users managed file operations such as creating, renaming, and organizing files using a textual interface. Each task required specific commands (e.g., <code>cd</code> for changing directories and <code>ls</code> for listing contents). These commands were coordinated by a master program known as the “shell,” which also allowed for command chaining and automation through shell scripts. The original Unix shell, <code>sh</code>, has evolved into modern shells like <code>bash</code>.</p>
 <p>Linux is a descendant of Unix, designed to function similarly, allowing many old Unix programs to run effectively. While old terminals could connect to modern Linux systems, it is more common to use software terminals that provide a Unix-style text interface alongside graphical programs.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-git"><a class="header" href="#what-is-git">What is Git?</a></h1>
-<h3 id="version-control"><a class="header" href="#version-control">Version control</a></h3>
-<p>Git is a version control system (VCS) that allows developers to track changes to their code over time.</p>
-<p>It basically takes a picture of what your files look like at the moment and stores a reference to a snapshot.</p>
-<h3 id="code-colaboration"><a class="header" href="#code-colaboration">Code colaboration</a></h3>
-<p>Lets say that you need to work on a coding project with your lab partner. How can both of you work on the same codebase?</p>
-<p>Git makes this possible</p>
+<p>Git is a version control system (VCS), which means that it saves, compares, and manages changes to files (usually code files) over time.</p>
+<p>This may seem innocuous, but it's actually vital to the development cycle. Virtually all professional code is managed by some VCS, and git is by far the most common.</p>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
+<h3 id="tracking-file-changes-over-time"><a class="header" href="#tracking-file-changes-over-time">Tracking file changes over time</a></h3>
+<p>Have you ever been scared to work on your code after completing a feature because you didn't break it? Git fixes this by allowing you to take a snapshot (or "commit") of your code, which you can always go back to by running a single command (<code>git checkout ...</code> or <code>git reset ...</code>).</p>
+<p>Making multiple commits (best practice is a commit for each feature) throughout the progression of a project allows you to revert at any time to any "milestone." You'll never lose your work again<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
+<h3 id="working-on-different-versions-of-your-code-at-the-same-time"><a class="header" href="#working-on-different-versions-of-your-code-at-the-same-time">Working on different versions of your code at the same time</a></h3>
+<p>Git branches allow you to work on multiple versions of your code base at the same time. For example, if you want to maintain an old, released version (e.g. adding security patches) while continuing feature development for the latest version, you could create a branch called <code>v1.0.0</code> and a branch called <code>dev</code>.</p>
+<p>By default, git repositories have one branch named <code>master</code> or <code>main</code>. This is often used either for development or for the latest stable version of the software.</p>
+<h3 id="code-collaboration"><a class="header" href="#code-collaboration">Code collaboration</a></h3>
+<p>Branches (or forked repositories on a platform like GitHub) can be used by multiple developers to collaborate on the same code base. Usually, each developer works on their own branch and implements a feature. Once that feature is complete, they <em>merge</em> the branch into the <code>main</code> or <code>master</code> branch.</p>
+<h3 id="storing-code-remotely"><a class="header" href="#storing-code-remotely">Storing code remotely</a></h3>
+<p>Git can be used with platforms like <a href="https://github.com">GitHub</a> or <a href="https://gitlab.com">GitLab</a> to manage code stored in the cloud. This is an important part of the modern development cycle.</p>
+<p>Typically, a developer creates a branch, implements their feature (or reaches some stopping point), and then commits their changes. After they commit their changes, they <em>push</em> it up to the server hosting the main code base so that others can access it.</p>
+<p>For smaller projects, developers may skip the "creating a branch" step and commit new code directly to the <code>main</code> branch.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Unless you delete or lose the git repository itself, or manually delete commits.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-install-git"><a class="header" href="#how-to-install-git">How to Install git</a></h1>
 <h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
 <p>Install it using your favorite package manager.</p>
@@ -627,6 +639,25 @@ To search for a string in a file, use <code>grep</code>:
 <p><img src="./images/IMG_23DAA7999A27-1.jpeg" alt="Drawing-1" /></p>
 <p>A good way of visualizing how this works</p>
 <p><img src="./images/IMG_96E3138F72ED-1.jpeg" alt="Drawing-2" /></p>
+<h3 id="merging-branches"><a class="header" href="#merging-branches">Merging branches</a></h3>
+<p>To bring the latest changes in <code>branch_a</code> into <code>main</code>, we would first switch to the main branch...</p>
+<pre><code class="language-bash">git checkout main
+</code></pre>
+<p>and then run the <code>git merge</code> command.</p>
+<pre><code class="language-bash">git merge branch_a
+</code></pre>
+<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you probably encounter this:</p>
+<pre><code>CONFLICT (content): Merge conflict in my_file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+<p>Before you do anything else, you will need to fix the merge conflicts. Git represents these conflicts within each file using the following template (or something similar, if you've modified the default settings):</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Change in the main branch
+=======
+Change in branch_a
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch_a
+</code></pre>
+<p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
 <div style="break-before: page; page-break-before: always;"></div>
                     </main>
 

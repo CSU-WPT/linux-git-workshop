@@ -208,6 +208,25 @@
 <p><img src="./images/IMG_23DAA7999A27-1.jpeg" alt="Drawing-1" /></p>
 <p>A good way of visualizing how this works</p>
 <p><img src="./images/IMG_96E3138F72ED-1.jpeg" alt="Drawing-2" /></p>
+<h3 id="merging-branches"><a class="header" href="#merging-branches">Merging branches</a></h3>
+<p>To bring the latest changes in <code>branch_a</code> into <code>main</code>, we would first switch to the main branch...</p>
+<pre><code class="language-bash">git checkout main
+</code></pre>
+<p>and then run the <code>git merge</code> command.</p>
+<pre><code class="language-bash">git merge branch_a
+</code></pre>
+<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you probably encounter this:</p>
+<pre><code>CONFLICT (content): Merge conflict in my_file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+<p>Before you do anything else, you will need to fix the merge conflicts. Git represents these conflicts within each file using the following template (or something similar, if you've modified the default settings):</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Change in the main branch
+=======
+Change in branch_a
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch_a
+</code></pre>
+<p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
 
                     </main>
 

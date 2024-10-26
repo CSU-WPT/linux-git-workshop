@@ -182,12 +182,24 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="what-is-git"><a class="header" href="#what-is-git">What is Git?</a></h1>
-<h3 id="version-control"><a class="header" href="#version-control">Version control</a></h3>
-<p>Git is a version control system (VCS) that allows developers to track changes to their code over time.</p>
-<p>It basically takes a picture of what your files look like at the moment and stores a reference to a snapshot.</p>
-<h3 id="code-colaboration"><a class="header" href="#code-colaboration">Code colaboration</a></h3>
-<p>Lets say that you need to work on a coding project with your lab partner. How can both of you work on the same codebase?</p>
-<p>Git makes this possible</p>
+<p>Git is a version control system (VCS), which means that it saves, compares, and manages changes to files (usually code files) over time.</p>
+<p>This may seem innocuous, but it's actually vital to the development cycle. Virtually all professional code is managed by some VCS, and git is by far the most common.</p>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
+<h3 id="tracking-file-changes-over-time"><a class="header" href="#tracking-file-changes-over-time">Tracking file changes over time</a></h3>
+<p>Have you ever been scared to work on your code after completing a feature because you didn't break it? Git fixes this by allowing you to take a snapshot (or "commit") of your code, which you can always go back to by running a single command (<code>git checkout ...</code> or <code>git reset ...</code>).</p>
+<p>Making multiple commits (best practice is a commit for each feature) throughout the progression of a project allows you to revert at any time to any "milestone." You'll never lose your work again<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
+<h3 id="working-on-different-versions-of-your-code-at-the-same-time"><a class="header" href="#working-on-different-versions-of-your-code-at-the-same-time">Working on different versions of your code at the same time</a></h3>
+<p>Git branches allow you to work on multiple versions of your code base at the same time. For example, if you want to maintain an old, released version (e.g. adding security patches) while continuing feature development for the latest version, you could create a branch called <code>v1.0.0</code> and a branch called <code>dev</code>.</p>
+<p>By default, git repositories have one branch named <code>master</code> or <code>main</code>. This is often used either for development or for the latest stable version of the software.</p>
+<h3 id="code-collaboration"><a class="header" href="#code-collaboration">Code collaboration</a></h3>
+<p>Branches (or forked repositories on a platform like GitHub) can be used by multiple developers to collaborate on the same code base. Usually, each developer works on their own branch and implements a feature. Once that feature is complete, they <em>merge</em> the branch into the <code>main</code> or <code>master</code> branch.</p>
+<h3 id="storing-code-remotely"><a class="header" href="#storing-code-remotely">Storing code remotely</a></h3>
+<p>Git can be used with platforms like <a href="https://github.com">GitHub</a> or <a href="https://gitlab.com">GitLab</a> to manage code stored in the cloud. This is an important part of the modern development cycle.</p>
+<p>Typically, a developer creates a branch, implements their feature (or reaches some stopping point), and then commits their changes. After they commit their changes, they <em>push</em> it up to the server hosting the main code base so that others can access it.</p>
+<p>For smaller projects, developers may skip the "creating a branch" step and commit new code directly to the <code>main</code> branch.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Unless you delete or lose the git repository itself, or manually delete commits.</p>
+</div>
 
                     </main>
 
