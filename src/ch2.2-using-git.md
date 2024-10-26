@@ -80,3 +80,8 @@ Change in branch_a
 ```
 
 To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.
+
+Afterwards, you may delete `branch_a`.
+```bash
+git branch -d branch_a
+```
