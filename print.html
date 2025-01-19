@@ -542,7 +542,7 @@ To search for a string in a file, use <code>grep</code>:
 <p>Text is resource-light, enabling users to interact efficiently with programs even over slow network connections. The command structure was concise to minimize keystrokes, contributing to the continued popularity of text interfaces.</p>
 <p>Unix users managed file operations such as creating, renaming, and organizing files using a textual interface. Each task required specific commands (e.g., <code>cd</code> for changing directories and <code>ls</code> for listing contents). These commands were coordinated by a master program known as the “shell,” which also allowed for command chaining and automation through shell scripts. The original Unix shell, <code>sh</code>, has evolved into modern shells like <code>bash</code>.</p>
 <p>Linux is a descendant of Unix, designed to function similarly, allowing many old Unix programs to run effectively. While old terminals could connect to modern Linux systems, it is more common to use software terminals that provide a Unix-style text interface alongside graphical programs.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-git"><a class="header" href="#what-is-git">What is Git?</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-git"><a class="header" href="#what-is-git">What is git?</a></h1>
 <p>Git is a version control system (VCS), which means that it saves, compares, and manages changes to files (usually code files) over time.</p>
 <p>This may seem innocuous, but it's actually vital to the development cycle. Virtually all professional code is managed by some VCS, and git is by far the most common.</p>
 <h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
@@ -625,7 +625,7 @@ To search for a string in a file, use <code>grep</code>:
 <p>and then run the <code>git merge</code> command.</p>
 <pre><code class="language-bash">git merge branch_a
 </code></pre>
-<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you probably encounter this:</p>
+<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will probably encounter this:</p>
 <pre><code>CONFLICT (content): Merge conflict in my_file.txt
 Automatic merge failed; fix conflicts and then commit the result.
 </code></pre>
@@ -640,7 +640,26 @@ Change in branch_a
 <p>Afterwards, you may delete <code>branch_a</code>.</p>
 <pre><code class="language-bash">git branch -d branch_a
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
+<h4 id="troubleshooting-merging-with-remote-branches"><a class="header" href="#troubleshooting-merging-with-remote-branches">Troubleshooting: Merging with remote branches</a></h4>
+<pre><code>From github.com:gaverkov/mixed_volumes_proposal
+ * branch            main       -&gt; FETCH_HEA
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint:
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cheat-sheet"><a class="header" href="#cheat-sheet">Cheat Sheet</a></h1>
+<h2 id="basic-linux-commands"><a class="header" href="#basic-linux-commands">Basic Linux Commands</a></h2>
+<h2 id="git-commands"><a class="header" href="#git-commands">Git commands</a></h2>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

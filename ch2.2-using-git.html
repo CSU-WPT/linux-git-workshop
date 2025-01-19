@@ -194,7 +194,7 @@
 <p>and then run the <code>git merge</code> command.</p>
 <pre><code class="language-bash">git merge branch_a
 </code></pre>
-<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you probably encounter this:</p>
+<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will probably encounter this:</p>
 <pre><code>CONFLICT (content): Merge conflict in my_file.txt
 Automatic merge failed; fix conflicts and then commit the result.
 </code></pre>
@@ -208,6 +208,22 @@ Change in branch_a
 <p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
 <p>Afterwards, you may delete <code>branch_a</code>.</p>
 <pre><code class="language-bash">git branch -d branch_a
+</code></pre>
+<h4 id="troubleshooting-merging-with-remote-branches"><a class="header" href="#troubleshooting-merging-with-remote-branches">Troubleshooting: Merging with remote branches</a></h4>
+<pre><code>From github.com:gaverkov/mixed_volumes_proposal
+ * branch            main       -&gt; FETCH_HEA
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint:
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
 </code></pre>
 
                     </main>
