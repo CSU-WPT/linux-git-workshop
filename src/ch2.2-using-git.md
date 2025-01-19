@@ -64,7 +64,7 @@ and then run the `git merge` command.
 git merge branch_a
 ```
 
-If the files modified in `main` and `branch_a` (after `branch_a` was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you probably encounter this:
+If the files modified in `main` and `branch_a` (after `branch_a` was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will probably encounter this:
 ```
 CONFLICT (content): Merge conflict in my_file.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -84,4 +84,22 @@ To resolve this, replace the text above with the final desired version (it could
 Afterwards, you may delete `branch_a`.
 ```bash
 git branch -d branch_a
+```
+
+#### Troubleshooting: Merging with remote branches
+```
+From github.com:gaverkov/mixed_volumes_proposal
+ * branch            main       -> FETCH_HEA
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint:
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
 ```
