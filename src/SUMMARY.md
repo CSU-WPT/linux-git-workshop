@@ -9,7 +9,8 @@
     - [Origin of the Linux Terminal](./ch1.2.2-terminal-origins.md)
 - [What is git?](./ch2-git.md)
   - [How to Install git](./ch2.1-git-installation.md)
-  - [Using git](./ch2.2-using-git.md)
+  - [Creating a GitHub Account](./ch2.2-create-github-account.md)
+  - [Using git](./ch2.3-using-git.md)
 
 ---
 

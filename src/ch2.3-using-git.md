@@ -6,6 +6,16 @@ You will first create what is called a repository, this is the place where your 
 
 In our case main will be our master repository. This is the main code that will be used.
 
+### Creating a repository locally
+
+Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in [Section 2.2](./ch2.2-create-github-account.md)) or by creating one locally using the following commands:
+
+```bash
+mkdir my_repo
+cd my_repo
+git init
+```
+
 ### Branches
 
 Branches allow you to work on different versions of your project simultaneously without affecting the main codebase
