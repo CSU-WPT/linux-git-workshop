@@ -1,24 +1,5 @@
 # Using git
 
-## The Three States
-
-Git has three main states that your files can reside in: **modified** , **staged** , and **committed**
-
-- Modified means that you have changed the file but have not committed it to your database yet.
-
-- Staged means that you have marked a modified file in its current version to go into your next commit snapshot.
-
-- Committed means that the data is safely stored in your local database.
-
-![Three-States](./images/three-states.png)
-https://git-scm.com/book/en/v2/Getting-Started-What-is-Git
-
-## How does it work?
-
-You will first create what is called a repository, this is the place where your code will be.
-
-In our case main will be our master repository. This is the main code that will be used.
-
 ### Creating a repository locally
 
 Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in [Section 2.2](./ch2.2-create-github-account.md)) or by creating one locally using the following commands:
