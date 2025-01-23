@@ -547,13 +547,22 @@ To search for a string in a file, use <code>grep</code>:
 <p>This may seem innocuous, but it's actually vital to the development cycle. Virtually all professional code is managed by some VCS, and git is by far the most common.</p>
 <h1 id="terms-to-know"><a class="header" href="#terms-to-know">Terms to know</a></h1>
 <ul>
-<li>Repository (Repo): A directory or storage space where your project lives, including all files and version history tracked by Git. Your <em>local</em> repository is your project’s history stored on your computer. A <em>remote</em> repository is a version of your project hosted on the internet or network.</li>
-<li>Working Directory: The directory on your local machine where you modify files before tracking them with Git</li>
-<li>Staging Area (Index): A intermediate area between your working directory and repository where changes are prepared for committing. It’s like a draft space, allowing you to review and adjust changes before they become part of the project’s history.</li>
-<li>Commit: A snapshot of your repository at a specific point in time, including all staged changes.</li>
-<li>Branches: branches are parallel versions of your project. They allow you to work on different features or fixes independently without affecting the main project until you’re ready to merge them back.</li>
-<li>Pull request: a pull request is a way to propose changes from one branch to another. It’s a request to review, discuss, and possibly merge the changes into the target branch, and is often used in team collaborations.</li>
-<li>Merge: merging is the process of integrating changes from one branch into another. It combines the histories of both branches, creating a single, unified history.</li>
+<li><strong>Repository (Repo)</strong>: A directory or storage space where your project lives, including all files and version history tracked by Git. Your <em>local</em> repository is your project’s history stored on your computer. A <em>remote</em> repository is a version of your project hosted on the internet or network.</li>
+<li><strong>Working Directory</strong>: The directory on your local machine where you modify files before tracking them with Git</li>
+<li><strong>Staging Area (Index)</strong>: A intermediate area between your working directory and repository where changes are prepared for committing. It’s like a draft space, allowing you to review and adjust changes before they become part of the project’s history.</li>
+<li><strong>The Three States</strong>: Git has three main states that your files can reside in: modified , staged , and committed
+<ul>
+<li><strong>Modified</strong> means that you have changed the file but have not committed it to your database yet.</li>
+<li><strong>Staged</strong> means that you have marked a modified file in its current version to go into your next commit snapshot.</li>
+<li><strong>Committed</strong> means that the data is safely stored in your local database.
+<img src="./images/three-states.png" alt="Three-States" />
+https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
+</ul>
+</li>
+<li><strong>Commit</strong>: A snapshot of your repository at a specific point in time, including all staged changes.</li>
+<li><strong>Branches</strong>: branches are parallel versions of your project. They allow you to work on different features or fixes independently without affecting the main project until you’re ready to merge them back.</li>
+<li><strong>Pull Request</strong>: a pull request is a way to propose changes from one branch to another. It’s a request to review, discuss, and possibly merge the changes into the target branch, and is often used in team collaborations.</li>
+<li><strong>Merge</strong>: merging is the process of integrating changes from one branch into another. It combines the histories of both branches, creating a single, unified history.</li>
 </ul>
 <h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
 <h3 id="tracking-file-changes-over-time"><a class="header" href="#tracking-file-changes-over-time">Tracking file changes over time</a></h3>
@@ -607,9 +616,6 @@ To search for a string in a file, use <code>grep</code>:
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-github-account"><a class="header" href="#creating-a-github-account">Creating a GitHub Account</a></h1>
 <h2 id="creating-your-first-repository"><a class="header" href="#creating-your-first-repository">Creating your first repository</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-git"><a class="header" href="#using-git">Using git</a></h1>
-<h2 id="how-does-it-work"><a class="header" href="#how-does-it-work">How does it work?</a></h2>
-<p>You will first create what is called a repository, this is the place where your code will be.</p>
-<p>In our case main will be our master repository. This is the main code that will be used.</p>
 <h3 id="creating-a-repository-locally"><a class="header" href="#creating-a-repository-locally">Creating a repository locally</a></h3>
 <p>Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in <a href="./ch2.2-create-github-account.html">Section 2.2</a>) or by creating one locally using the following commands:</p>
 <pre><code class="language-bash">mkdir my_repo
