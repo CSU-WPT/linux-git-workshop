@@ -36,7 +36,6 @@ A repository (repo) is where your project files and version history are stored. 
 
 7. **Choose a Git Ignore** *(Optional)*: Select a `.gitignore` template to automatically exclude common files that shouldn’t be tracked.
    > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/eeb8a61c-d14b-4dbe-9119-2aa31387104a" width="400">
-
 8. **Choose a License** *(Optional)*: Pick a license if you want to specify terms for using and sharing your code.
     > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/7c0870a4-d376-4527-89ca-fa8bbc888657" width="400">
 
