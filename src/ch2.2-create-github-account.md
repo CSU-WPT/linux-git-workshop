@@ -20,7 +20,7 @@ A repository (repo) is where your project files and version history are stored. 
 
 1. **Log In**: Go to [GitHub](https://github.com/) and sign in to your account.  
 2. **Create a New Repository**: Click on the **+** icon in the top-right corner and select **New repository**.
-    > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/db4acf21-c3dc-4a94-9606-24de03012516" width="300">
+    > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/db4acf21-c3dc-4a94-9606-24de03012516" width="250">
    
 3. **Repository Name**: Enter a name for your repository. It should be descriptive of your project.  
    > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/6e31c390-007e-4b04-8d27-90bba1a69938" width="400">
@@ -54,7 +54,7 @@ To clone a repository locally, follow these steps:
     - Go to the GitHub repository page.
     - Click on the Code button.
     - Under Clone, copy the URL.
-      > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/90c30692-d88a-4d0b-a31c-36df8c8bd9a2" width="400">
+      > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/90c30692-d88a-4d0b-a31c-36df8c8bd9a2" width="300">
 3. Clone the repository by using the git clone command followed by the copied repository URL:
    ```bash
    git clone https://github.com/username/repository-name.git
