@@ -613,17 +613,33 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 <p>Type <code>git version</code> to verify Git was installed.</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-github-creating-an-account-and-your-first-repository"><a class="header" href="#setting-up-github-creating-an-account-and-your-first-repository">Setting Up GitHub: Creating an Account and Your First Repository</a></h1>
-<h2 id="creating-a-github-account"><a class="header" href="#creating-a-github-account">Creating a GitHub Account</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-github-account"><a class="header" href="#creating-a-github-account">Creating a GitHub Account</a></h1>
 <p>GitHub is a web-based platform that uses Git for version control, allowing you to store, manage, and collaborate on code projects. Follow these steps to create an account:</p>
 <ol>
-<li><strong>Go to GitHub</strong>: Open your web browser and navigate to <a href="https://github.com/">GitHub</a>.</li>
-<li><strong>Sign Up</strong>: Click on the <strong>Sign Up</strong> button in the top-right corner.</li>
-<li><strong>Enter Your Details</strong>: Provide a username, email address, and password.</li>
-<li><strong>Verify Your Account</strong>: Complete the CAPTCHA challenge and click <strong>Create account</strong>.</li>
-<li><strong>Check Your Email</strong>: GitHub will send a verification email. Open it and click the confirmation link.</li>
-<li><strong>Choose a Plan</strong>: You can select the free plan or a paid plan with additional features.</li>
-<li><strong>Customize Your Experience</strong> <em>(Optional)</em>: GitHub may ask questions about your experience level and interests. Answer them or skip this step.</li>
+<li>
+<p><strong>Go to GitHub</strong>: Open your web browser and navigate to <a href="https://github.com/">GitHub</a>.</p>
+</li>
+<li>
+<p><strong>Sign Up</strong>: Click on the <strong>Sign Up</strong> button in the top-right corner.</p>
+<blockquote>
+<p>    <img src="https://github.com/user-attachments/assets/2b92a140-d186-4623-a831-dd5e2a411f10" width="600"></p>
+</blockquote>
+</li>
+<li>
+<p><strong>Enter Your Details</strong>: Provide a username, email address, and password.</p>
+</li>
+<li>
+<p><strong>Verify Your Account</strong>: Complete the CAPTCHA challenge and click <strong>Create account</strong>.</p>
+</li>
+<li>
+<p><strong>Check Your Email</strong>: GitHub will send a verification email. Open it and click the confirmation link.</p>
+</li>
+<li>
+<p><strong>Choose a Plan</strong>: You can select the free plan or a paid plan with additional features.</p>
+</li>
+<li>
+<p><strong>Customize Your Experience</strong> <em>(Optional)</em>: GitHub may ask questions about your experience level and interests. Answer them or skip this step.</p>
+</li>
 </ol>
 <p>Once completed, you now have a GitHub account and can start creating repositories to manage your code.</p>
 <hr />
@@ -681,6 +697,34 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 </li>
 </ol>
 <p>Your repository is now ready! You can start adding files, cloning it to your local machine, or collaborating with others.</p>
+<h2 id="cloning-a-repository-locally"><a class="header" href="#cloning-a-repository-locally">Cloning a Repository Locally</a></h2>
+<p>To clone a repository locally, follow these steps:</p>
+<ol>
+<li>First, navigate to the directory where you want to clone the repository:
+<pre><code class="language-bash">cd /path/to/your/directory
+</code></pre>
+</li>
+<li>Get the repository URL:
+<ul>
+<li>Go to the GitHub repository page.</li>
+<li>Click on the Code button.</li>
+<li>Under Clone, copy the URL.
+<blockquote>
+<p>    <img src="https://github.com/user-attachments/assets/90c30692-d88a-4d0b-a31c-36df8c8bd9a2" width="400"></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Clone the repository by using the git clone command followed by the copied repository URL:
+<pre><code class="language-bash">git clone https://github.com/username/repository-name.git
+</code></pre>
+</li>
+<li>This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
+<pre><code class="language-bash">cd repository-name
+</code></pre>
+</li>
+</ol>
+<p>You can now work with the repository locally.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-git"><a class="header" href="#using-git">Using git</a></h1>
 <h3 id="creating-a-repository-locally"><a class="header" href="#creating-a-repository-locally">Creating a repository locally</a></h3>
 <p>Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in <a href="./ch2.2-create-github-account.html">Section 2.2</a>) or by creating one locally using the following commands:</p>
