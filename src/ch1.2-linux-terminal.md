@@ -32,6 +32,10 @@ To access `spirit` with the account above, use the following command:
 
     ssh jodoe@spirit.eecs.csuohio.edu
 
+To see a list of all the CSU Linux computers, ssh into grail, and then execute:
+
+    cat /etc/hosts
+
 ### Using Google Cloud Shell
 
 You also have the option of using Google Cloud Shell, which is free. Simply go to <https://shell.cloud.google.com/>. After the shell is provisioned, you should see the environment below:
