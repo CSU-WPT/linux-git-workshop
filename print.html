@@ -536,36 +536,41 @@ To search for a string in a file, use <code>grep</code>:
 </code></pre>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-turn-in-assignments-using-ssh-on-windows"><a class="header" href="#how-to-turn-in-assignments-using-ssh-on-windows">How to Turn In Assignments using SSH on Windows</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="origin-of-the-linux-terminal"><a class="header" href="#origin-of-the-linux-terminal">Origin of the Linux Terminal</a></h1>
+<p>During the early development of the computer industry, Unix emerged as a multi-user operating system for mainframe computers. Users connected remotely via basic terminals, which featured only a keyboard and screen, sending keystrokes to the server and receiving text-based outputs. Programs had to handle text input and output due to the lack of graphical interfaces.</p>
+<p>Text is resource-light, enabling users to interact efficiently with programs even over slow network connections. The command structure was concise to minimize keystrokes, contributing to the continued popularity of text interfaces.</p>
+<p>Unix users managed file operations such as creating, renaming, and organizing files using a textual interface. Each task required specific commands (e.g., <code>cd</code> for changing directories and <code>ls</code> for listing contents). These commands were coordinated by a master program known as the “shell,” which also allowed for command chaining and automation through shell scripts. The original Unix shell, <code>sh</code>, has evolved into modern shells like <code>bash</code>.</p>
+<p>Linux is a descendant of Unix, designed to function similarly, allowing many old Unix programs to run effectively. While old terminals could connect to modern Linux systems, it is more common to use software terminals that provide a Unix-style text interface alongside graphical programs.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-submit-assignments-using-ssh-on-windows"><a class="header" href="#how-to-submit-assignments-using-ssh-on-windows">How to Submit Assignments using SSH on Windows</a></h1>
 <p>Several of the Computer Science classes at <strong>Cleveland State University</strong> use the custom <code>turnin</code> command available on the <code>grail.eecs.csuohio.edu</code> server to turn in assignments.</p>
 <p>On Windows, we recommend using <a href="https://mobaxterm.mobatek.net/">Mobaxterm</a> as your SSH client. We also provide guides for using <a href="https://www.putty.org/">PuTTY</a> and <a href="https://winscp.net/eng/index.php">WinSCP</a>.</p>
 <h2 id="guides"><a class="header" href="#guides">Guides</a></h2>
-<h3 id="using-mobaxterm"><a class="header" href="#using-mobaxterm">Using Mobaxterm</a></h3>
-<p>Download and install Mobaxterm from <a href="https://mobaxterm.mobatek.net/">here</a>.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HoHwSs5IW5k?si=MuFFw6-7c2C-gQKq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<h3 id="using-putty"><a class="header" href="#using-putty">Using PuTTY</a></h3>
-<p>Download and install PuTTY from <a href="https://www.putty.org/">here</a>.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sVBYU9I_WA8?si=caW76f2D24HgEaAO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<h3 id="using-winscp"><a class="header" href="#using-winscp">Using WinSCP</a></h3>
-<p>Download and install WinSCP from <a href="https://winscp.net/eng/index.php">here</a>.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5wKETQH3hB4?si=RnRJLVy8glq6u_xd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<h2 id="csu-server-accounts"><a class="header" href="#csu-server-accounts">CSU Server Accounts</a></h2>
+<ul>
+<li><a href="./ch1.3.1-mobaxterm.html">How to Submit Assignments using Mobaxterm on Windows</a></li>
+<li><a href="./ch1.3.2-putty.html">How to Submit Assignments using PuTTY on Windows</a></li>
+<li><a href="./ch1.3.3-winscp.html">How to Submit Assignments using WinSCP on Windows</a></li>
+</ul>
+<h2 id="csu-server-account-format"><a class="header" href="#csu-server-account-format">CSU Server Account Format</a></h2>
 <p><strong>Username:</strong> <code>&lt;first two letters of your first name (lowercase)&gt;&lt;first six letters of your last name (lowercase)&gt;</code>
 <br />
 <strong>Password:</strong> <code>&lt;CSU ID&gt;&lt;first letter of your last name (uppercase)&gt;</code></p>
 <div class="warning">
 <p>Because your CSU ID is known by instructors and many other staff, <strong>you <em>MUST</em> change your password after the first time you log in</strong>.</p>
 </div>
-<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<h4 id="example"><a class="header" href="#example">Example</a></h4>
 <p>For John Doe with a CSU ID of 1234567:</p>
 <p><strong>Username:</strong> <code>jodoe</code> (since "Doe" is only 3 letters, we simply use those 3 letters)
 <br />
 <strong>Password:</strong> <code>1234567D</code></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="origin-of-the-linux-terminal"><a class="header" href="#origin-of-the-linux-terminal">Origin of the Linux Terminal</a></h1>
-<p>During the early development of the computer industry, Unix emerged as a multi-user operating system for mainframe computers. Users connected remotely via basic terminals, which featured only a keyboard and screen, sending keystrokes to the server and receiving text-based outputs. Programs had to handle text input and output due to the lack of graphical interfaces.</p>
-<p>Text is resource-light, enabling users to interact efficiently with programs even over slow network connections. The command structure was concise to minimize keystrokes, contributing to the continued popularity of text interfaces.</p>
-<p>Unix users managed file operations such as creating, renaming, and organizing files using a textual interface. Each task required specific commands (e.g., <code>cd</code> for changing directories and <code>ls</code> for listing contents). These commands were coordinated by a master program known as the “shell,” which also allowed for command chaining and automation through shell scripts. The original Unix shell, <code>sh</code>, has evolved into modern shells like <code>bash</code>.</p>
-<p>Linux is a descendant of Unix, designed to function similarly, allowing many old Unix programs to run effectively. While old terminals could connect to modern Linux systems, it is more common to use software terminals that provide a Unix-style text interface alongside graphical programs.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="how-to-submit-assignments-using-mobaxterm-on-windows"><a class="header" href="#how-to-submit-assignments-using-mobaxterm-on-windows">How to Submit Assignments using Mobaxterm on Windows</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HoHwSs5IW5k?si=MuFFw6-7c2C-gQKq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2 id="guide"><a class="header" href="#guide">Guide</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="how-to-submit-assignments-using-putty-on-windows"><a class="header" href="#how-to-submit-assignments-using-putty-on-windows">How to Submit Assignments using PuTTY on Windows</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sVBYU9I_WA8?si=caW76f2D24HgEaAO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>o
+<h2 id="guide-1"><a class="header" href="#guide-1">Guide</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="how-to-submit-assignments-using-winscp-on-windows"><a class="header" href="#how-to-submit-assignments-using-winscp-on-windows">How to Submit Assignments using WinSCP on Windows</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5wKETQH3hB4?si=RnRJLVy8glq6u_xd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2 id="guide-2"><a class="header" href="#guide-2">Guide</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-git"><a class="header" href="#what-is-git">What is git?</a></h1>
 <p>Git is a distributed version control system (VCS) that helps developers track and manage changes in their code over time. With Git, every time you commit, or save the state of your project, Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots. <sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <p>This may seem innocuous, but it's actually vital to the development cycle. Virtually all professional code is managed by some VCS, and git is by far the most common.</p>
