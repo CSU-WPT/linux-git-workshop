@@ -6,66 +6,60 @@
 
 ### Downloading
 
-Go to https://winscp.net 
+Go to https://www.putty.org/ 
 
-Click the green “Download Now” 
+Click “Download PuTTY” 
 
-Click the green “Download WinSCP x.x.x (xx MB)” 
+In the “Package files” section, download the .msi file next to “64-bit x86” 
 
-Wait for the .exe to download. If it does not download, click the green “Direct Download” 
+Wait for the .exe to download, then run it 
 
-Run the .exe 
+Click “Next” 
 
-Select install mode “Install for me only” 
+Click “Next” 
 
-“Accept” the License Agreement 
+Make sure “Put install directory on the PATH for command prompts” is selected, then click “Install” 
 
-Select setup type “Typical installation (recommended)” and click “Next” 
+Click “Allow” if it asks to make changes on your device 
 
-Select your preferred user interface style (this guide will assume you chose Commander) and click “Next” 
+Click “Finish” 
 
-Click on “Install” 
-
-Let the program install. Click on “Finish”. This will launch WinSCP and open the “Getting started” page in your default browser 
+Go to where it was installed and run putty.exe (or click the desktop icon if you chose that option) AND run pscsp.exe
 
 ---
 
 ### Copying the assignment over
 
-You will be prompted with a “Login” screen 
+Before turning in, you must copy your file to the remote server 
 
-In “Host name”, enter “grail.eecs.csuohio.edu” 
+To do this, click on the Windows search bar and find “Command Prompt”. Open it 
 
-In “User name”, enter the first 2 letters of your first name, followed by the first 6 letters of your last name. This is the default user name for students. You might have a different user name depending on the length and popularity of your names. You should have gotten an email with your user name and password for your account. If you did not receive one, ask your instructor for assistance 
+Make sure the file you wish to transfer over is on your desktop 
 
-In “Password”, enter your student ID followed by the first letter of your last name, capitalized (ex. 1234567A) 
+Type “pscp “C:\Users\user\Desktop\file.extension” username@grail.eecs.csuohio.edu:” 
 
-Click “Save”, then click “OK” (this will let you easily enter grail again during later sessions) 
+In the above command, “user” should be your Windows user file name, “file.extension” should be the file you wish to turn in, and “username” should be your school Linux username (first 2 letters of your first name, followed by the first 6 letters of your last name is the usual student user name) 
 
-Click “Login” 
+You might have a different user name depending on the length and popularity of your names. You should have gotten an email with your user name and password for your account. If you did not receive one, ask your instructor for assistance 
 
-Enter your password again and click “OK” 
+For your password, type your student ID followed by the first letter of your last name, capitalized (ex. 1234567A), then press enter. You will not see your password as you type it – this is intended 
 
-Click “Accept” 
-
-The left side is your home computer directory. Navigate to the file you want to transfer over. The “..” folder takes you up one directory 
-
-Once you have located the file, drag it from the left side and drop it on the right side. Alternatively, you can locate the file on your computer without WinSCP, then drag and drop it from your computer to the right side 
-
-Before copying over, you might want to create a folder on your remote account to keep it organized. To do this, click the “New” button above the right side, click “Directory...”, choose a name for the folder, then click “OK” 
-
-Once the file has been copied over, you are now ready to turn it in 
+The file should be successfully transferred over. Now go back to the putty.exe program that opened 
 
 ---
 
 ### Turning the assignment in
 
-On the right side, navigate to the folder you put your file in 
+In “Host Name (or IP address)”, enter “grail.eecs.csuohio.edu” and click “Open” 
 
-Click on the black “Open terminal” button near the top of the program 
+Click “Accept” 
 
-Click “OK” if it asks “Do you want to open a separate shell session?” 
+Type your user name 
 
-In the “Enter command” box, type the turnin command that your instructor has told you to use. If you are unsure of this command, ask your instructor 
+Type your password 
+
+You should now be connected to grail. Type "ls” to check if your file was properly copied over 
+
+Type the turnin command that your instructor has told you to use. If you are unsure of this command, ask your instructor 
 
 You should see a line in the terminal saying “Your files have been submitted to ‘class, homework’ for grading” indicating a successful turnin 
