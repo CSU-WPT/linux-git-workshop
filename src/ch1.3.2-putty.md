@@ -3,7 +3,6 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sVBYU9I_WA8?si=caW76f2D24HgEaAO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>o
 
 ## Guide
-
 ### Downloading
 
 Go to https://www.putty.org/ 
@@ -26,8 +25,6 @@ Click “Finish”
 
 Go to where it was installed and run putty.exe (or click the desktop icon if you chose that option) AND run pscsp.exe
 
----
-
 ### Copying the assignment over
 
 Before turning in, you must copy your file to the remote server 
@@ -45,8 +42,6 @@ You might have a different user name depending on the length and popularity of y
 For your password, type your student ID followed by the first letter of your last name, capitalized (ex. 1234567A), then press enter. You will not see your password as you type it – this is intended 
 
 The file should be successfully transferred over. Now go back to the putty.exe program that opened 
-
----
 
 ### Turning the assignment in
 
