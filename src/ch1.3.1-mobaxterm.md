@@ -4,7 +4,7 @@
 
 ## Guide
 
-### Downloading
+## Downloading
 
 Go to https://mobaxterm.mobatek.net/ 
 
@@ -28,9 +28,7 @@ Click “Install” and wait for it to install
 
 Click “Finish” 
 
----
-
-### Copying the assignment over
+## Copying the assignment over
 
 Run the .exe file 
 
@@ -52,9 +50,7 @@ You are now connected to the grail server. From here, it is recommended that you
 
 To copy a file from your home computer to the server, simply drag it into the list on the left and it will automatically copy over 
 
----
-
-### Turning the assignment in
+## Turning the assignment in
 
 Once the file has been copied over, navigate to the directory that you put it in 
 
