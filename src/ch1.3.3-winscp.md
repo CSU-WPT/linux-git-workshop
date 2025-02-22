@@ -3,7 +3,6 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5wKETQH3hB4?si=RnRJLVy8glq6u_xd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Guide
-
 ### Downloading
 
 Go to https://winscp.net 
@@ -27,8 +26,6 @@ Select your preferred user interface style (this guide will assume you chose Com
 Click on “Install” 
 
 Let the program install. Click on “Finish”. This will launch WinSCP and open the “Getting started” page in your default browser 
-
----
 
 ### Copying the assignment over
 
@@ -55,8 +52,6 @@ Once you have located the file, drag it from the left side and drop it on the ri
 Before copying over, you might want to create a folder on your remote account to keep it organized. To do this, click the “New” button above the right side, click “Directory...”, choose a name for the folder, then click “OK” 
 
 Once the file has been copied over, you are now ready to turn it in 
-
----
 
 ### Turning the assignment in
 
