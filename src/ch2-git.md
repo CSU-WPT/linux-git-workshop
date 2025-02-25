@@ -8,14 +8,13 @@ This may seem innocuous, but it's actually vital to the development cycle. Virtu
 
 - **Repository (Repo)**: A directory or storage space where your project lives, including all files and version history tracked by Git. Your _local_ repository is your project’s history stored on your computer. A _remote_ repository is a version of your project hosted on the internet or network.
 - **Working Directory**: The directory on your local machine where you modify files before tracking them with Git
-- **Staging Area (Index)**: A intermediate area between your working directory and repository where changes are prepared for committing. It’s like a draft space, allowing you to review and adjust changes before they become part of the project’s history.
+- **Commit**: A snapshot of your repository at a specific point in time, including all staged changes.
 - **The Three States**: Git has three main states that your files can reside in: modified , staged , and committed
   - **Modified** means that you have changed the file but have not committed it to your database yet.
   - **Staged** means that you have marked a modified file in its current version to go into your next commit snapshot.
   - **Committed** means that the data is safely stored in your local database.
     ![Three-States](./images/three-states.png)
     https://git-scm.com/book/en/v2/Getting-Started-What-is-Git
-- **Commit**: A snapshot of your repository at a specific point in time, including all staged changes.
 - **Branches**: branches are parallel versions of your project. They allow you to work on different features or fixes independently without affecting the main project until you’re ready to merge them back.
 - **Pull Request**: a pull request is a way to propose changes from one branch to another. It’s a request to review, discuss, and possibly merge the changes into the target branch, and is often used in team collaborations.
 - **Merge**: merging is the process of integrating changes from one branch into another. It combines the histories of both branches, creating a single, unified history.
