@@ -10,22 +10,6 @@ cd my_repo
 git init
 ```
 
-### Branches
-
-Branches allow you to work on different versions of your project simultaneously without affecting the main codebase
-
-From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.
-
-Use this command to create a new branch:
-
-`git checkout -b "name_of_the_branch"`
-
-To switch branches
-
-`git checkout "name_of_the_branch"`
-
-![Drawing-0](./images/IMG_36D4CB635079-1.jpeg)
-
 ### Staging
 
 Once we made some changes we will want to commit them, before we can do that we want to stage the files. This is like another layer to saving your files. This is so if you have two files you changed but only one is ready to commit, you can select the file to stage.
@@ -55,6 +39,22 @@ This command creates a commit:
 A good way of visualizing how this works
 
 ![Drawing-2](./images/IMG_96E3138F72ED-1.jpeg)
+
+### Branches
+
+Branches allow you to work on different versions of your project simultaneously without affecting the main codebase
+
+From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.
+
+Use this command to create a new branch:
+
+`git checkout -b <name_of_the_branch>`
+
+To switch branches
+
+`git checkout <name_of_the_branch>`
+
+![Drawing-0](./images/IMG_36D4CB635079-1.jpeg)
 
 ### Merging branches
 
