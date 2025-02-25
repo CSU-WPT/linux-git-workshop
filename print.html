@@ -665,7 +665,7 @@ To search for a string in a file, use <code>grep</code>:
 <ul>
 <li><strong>Repository (Repo)</strong>: A directory or storage space where your project lives, including all files and version history tracked by Git. Your <em>local</em> repository is your project’s history stored on your computer. A <em>remote</em> repository is a version of your project hosted on the internet or network.</li>
 <li><strong>Working Directory</strong>: The directory on your local machine where you modify files before tracking them with Git</li>
-<li><strong>Staging Area (Index)</strong>: A intermediate area between your working directory and repository where changes are prepared for committing. It’s like a draft space, allowing you to review and adjust changes before they become part of the project’s history.</li>
+<li><strong>Commit</strong>: A snapshot of your repository at a specific point in time, including all staged changes.</li>
 <li><strong>The Three States</strong>: Git has three main states that your files can reside in: modified , staged , and committed
 <ul>
 <li><strong>Modified</strong> means that you have changed the file but have not committed it to your database yet.</li>
@@ -675,7 +675,6 @@ To search for a string in a file, use <code>grep</code>:
 https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 </ul>
 </li>
-<li><strong>Commit</strong>: A snapshot of your repository at a specific point in time, including all staged changes.</li>
 <li><strong>Branches</strong>: branches are parallel versions of your project. They allow you to work on different features or fixes independently without affecting the main project until you’re ready to merge them back.</li>
 <li><strong>Pull Request</strong>: a pull request is a way to propose changes from one branch to another. It’s a request to review, discuss, and possibly merge the changes into the target branch, and is often used in team collaborations.</li>
 <li><strong>Merge</strong>: merging is the process of integrating changes from one branch into another. It combines the histories of both branches, creating a single, unified history.</li>
@@ -700,6 +699,17 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 <p>Unless you delete or lose the git repository itself, or manually delete commits.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-install-git"><a class="header" href="#how-to-install-git">How to Install git</a></h1>
+<h2 id="windows"><a class="header" href="#windows">Windows</a></h2>
+<ol>
+<li>
+<p>Go to the latest <a href="https://gitforwindows.org/">Git Windows installer</a> and download the latest version.</p>
+</li>
+<li>
+<p>Follow the instructions as provided by the installer wizard.</p>
+</li>
+</ol>
+<h2 id="macos"><a class="header" href="#macos">MacOS</a></h2>
+<p>MacOS will already have git installed by default.</p>
 <h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
 <p>Install it using your favorite package manager.</p>
 <h4 id="debian--ubuntu-apt"><a class="header" href="#debian--ubuntu-apt">Debian / Ubuntu (apt)</a></h4>
@@ -712,36 +722,6 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 <pre><code class="language-bash">sudo pacman -S git
 </code></pre>
 <p>For other Linux distros you can use the same name for the package <code>git-all</code></p>
-<h2 id="macos"><a class="header" href="#macos">MacOS</a></h2>
-<p>MacOS will already have git installed by default.</p>
-<h2 id="windows"><a class="header" href="#windows">Windows</a></h2>
-<ol>
-<li>
-<p>Go to the latest <a href="https://gitforwindows.org/">Git Windows installer</a> and download the latest version.</p>
-</li>
-<li>
-<p>Follow the instructions as provided by the installer wizard.</p>
-</li>
-<li>
-<p>Open the windows command prompt.</p>
-</li>
-<li>
-<p>Type <code>git version</code> to verify Git was installed.</p>
-</li>
-</ol>
-<h1 id="after-the-installation"><a class="header" href="#after-the-installation">After the installation</a></h1>
-<p>Make sure git is installed correctly by opening your terminal and run:</p>
-<p><code>git --version</code></p>
-<p>If it is installed correctly, you should see:</p>
-<p><code>git version &lt;version-number&gt;</code></p>
-<p>Next, you should verify that Git is configured properly by setting up your name and email. To check if you have already configured Git, navigate to the terminal and run:</p>
-<p><code>git config --global --list</code></p>
-<p>If Git has been configured, the terminal will return your set username and email. If this is not the case, you need to configure Git by completing the following:</p>
-<p>To set your name run:</p>
-<p><code>git config  --global user.name &lt;your name&gt;</code></p>
-<p>To set your email run:</p>
-<p><code>git config  --global user.email &lt;your email&gt;</code></p>
-<p>This information is required to use Git and must be entered before committing any of your changes. For additional information regarding Git setup and initial requirements, view the <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">official Git documentation</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-github-account"><a class="header" href="#creating-a-github-account">Creating a GitHub Account</a></h1>
 <p>GitHub is a web-based platform that uses Git for version control, allowing you to store, manage, and collaborate on code projects. Follow these steps to create an account:</p>
 <ol>
@@ -861,14 +841,6 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 cd my_repo
 git init
 </code></pre>
-<h3 id="branches"><a class="header" href="#branches">Branches</a></h3>
-<p>Branches allow you to work on different versions of your project simultaneously without affecting the main codebase</p>
-<p>From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.</p>
-<p>Use this command to create a new branch:</p>
-<p><code>git checkout -b "name_of_the_branch"</code></p>
-<p>To switch branches</p>
-<p><code>git checkout "name_of_the_branch"</code></p>
-<p><img src="./images/IMG_36D4CB635079-1.jpeg" alt="Drawing-0" /></p>
 <h3 id="staging"><a class="header" href="#staging">Staging</a></h3>
 <p>Once we made some changes we will want to commit them, before we can do that we want to stage the files. This is like another layer to saving your files. This is so if you have two files you changed but only one is ready to commit, you can select the file to stage.</p>
 <p>To stage your file run this command:</p>
@@ -884,6 +856,14 @@ git init
 <p><img src="./images/IMG_23DAA7999A27-1.jpeg" alt="Drawing-1" /></p>
 <p>A good way of visualizing how this works</p>
 <p><img src="./images/IMG_96E3138F72ED-1.jpeg" alt="Drawing-2" /></p>
+<h3 id="branches"><a class="header" href="#branches">Branches</a></h3>
+<p>Branches allow you to work on different versions of your project simultaneously without affecting the main codebase</p>
+<p>From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.</p>
+<p>Use this command to create a new branch:</p>
+<p><code>git checkout -b &lt;name_of_the_branch&gt;</code></p>
+<p>To switch branches</p>
+<p><code>git checkout &lt;name_of_the_branch&gt;</code></p>
+<p><img src="./images/IMG_36D4CB635079-1.jpeg" alt="Drawing-0" /></p>
 <h3 id="merging-branches"><a class="header" href="#merging-branches">Merging branches</a></h3>
 <p>To bring the latest changes in <code>branch_a</code> into <code>main</code>, we would first switch to the main branch...</p>
 <pre><code class="language-bash">git checkout main
