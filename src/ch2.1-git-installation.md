@@ -37,3 +37,29 @@ MacOS will already have git installed by default.
 3. Open the windows command prompt.
 
 4. Type `git version` to verify Git was installed.
+
+# After the installation
+
+Make sure git is installed correctly by opening your terminal and run:
+
+`git --version`
+
+If it is installed correctly, you should see:
+
+`git version <version-number>`
+
+Next, you should verify that Git is configured properly by setting up your name and email. To check if you have already configured Git, navigate to the terminal and run:
+
+`git config --global --list`
+
+If Git has been configured, the terminal will return your set username and email. If this is not the case, you need to configure Git by completing the following:
+
+To set your name run:
+
+`git config  --global user.name <your name>`
+
+To set your email run:
+
+`git config  --global user.email <your email>`
+
+This information is required to use Git and must be entered before committing any of your changes. For additional information regarding Git setup and initial requirements, view the [official Git documentation](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
