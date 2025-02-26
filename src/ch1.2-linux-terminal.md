@@ -2,7 +2,7 @@
 
 The Linux command line is a text interface to your computer. Often referred to as the shell, terminal, console, prompt or various other names, it can give the appearance of being complex and confusing to use. However, the basics are actually quite simple and easy to learn.
 
-**Side note:** If you are interested in learning more about the history of the terminal, read [Section 1.2.10](./ch1.2.10-terminal-origins.md) for more information.
+**Side note:** If you are interested in learning more about the history of the terminal, read [Section 1.2.1](./ch1.2.2-terminal-origins.md) for more information.
 
 ## Accessing the Terminal Over SSH
 
@@ -32,7 +32,16 @@ When you run a command, any output will typically appear in the terminal. Some c
 
 ## Navigating the Linux Environment
 
-The `pwd` command (print working directory) shows your current location in the file system. The working directory is where file operations take place by default unless specified otherwise. To check where you are, use `pwd`.
+### The Linux Essentials
+* The `pwd` command (print working directory) shows your current location in the file system. The working directory is where file operations take place by default unless specified otherwise. To check where you are, use `pwd`.
+
+* To see other directories available from the directory that you are in, use `ls`.
+
+* To autocomplete a directory or filename, type the first couple letters and then hit `tab`. If there are multiple files that start with those letters, nothing will happen, hit `tab` again and it will show all the available files that start with those letters.
+
+* A quick way to run similar commands to the one you just ran is to hit the up arrow, which will autofill the previous command, and then you can make a small change and run it again. The up arrow accesses a history of all the commands you've used recently, so you can keep hitting it to see previous commands.
+
+* Pressing `ctrl+c` at any time will interrupt the current execution, if there is any, and return to the command line. This is useful for running C programs, especially if you run into an infinite loop. Just execute `ctrl+c` and it will stop.
 
 To change the working directory, use `cd` (change directory):
 
@@ -53,6 +62,7 @@ To change the working directory, use `cd` (change directory):
   cd ..
   pwd
   ```
+- Just one `.` is used to refer to the current directory. This will be useful later on when we are moving files between directories.
 
 - To return to your home directory (also represented by the `~` path):
   ```
@@ -113,6 +123,11 @@ mkdir dir1 dir2 dir3
 ```
 
 This command creates multiple directories at once. If you'd like to create nested directories, use the `-p` option (short for "make all **P**arent directories"):
+* `-p` is what is called an "option". Most linux commands have options, ways to customize the implimentation or scope of the execution of that command. To see a list of all of the options associated with any command, type that command followed by `--help` and you will get a list of the available options along with a brief description of each.
+    ```bash
+    mkdir --help
+    ```
+
 
 ```bash
 mkdir -p dir4/dir5/dir6
@@ -155,17 +170,21 @@ The `echo` command can also create files with content:
 ```bash
 echo "This is a test" > test_1.txt
 echo "This is a second test" > test_2.txt
-echo "This is a third test" > test_3.txt
+echo "This is a third test" > test_2a.txt
 ```
 
 You can view their contents using `cat`. To combine multiple files:
 
 ```bash
-cat test_1.txt test_2.txt test_3.txt > combined.txt
+cat test_1.txt test_2.txt test_2a.txt > combined.txt
 cat combined.txt
 ```
 
-Wildcards simplify commands when file names follow patterns. For example, these commands all achieve the same result:
+Wildcards simplify commands when file names follow patterns.
+* `?` will accept any filename with just one character that follows that pattern before the `?`
+    * So using just `?` will grab `test_1` and `test_2` but not `test_2a`
+* `*` will accept any filename with any amount of characters that follows the pattern before it, so long as it begins with the preceding name.
+    * This will grab all three files, since they all follow the same initial pattern  
 
 ```bash
 cat test_?.txt
@@ -186,6 +205,18 @@ less combined.txt
 ```
 
 You can navigate using arrow keys and exit with `q`. This basic workflow helps in creating and managing files with content efficiently.
+
+## Vim & Nano
+These tools are complex enough to deserve entire pages of their own, but just to get your toes wet, if you'd like to properly edit files in the terminal, you can do so using the `nano` or `vim` commands. These commands will start the nano or vim programs, and you will not be able to use normal linux commands. Don't panic!
+```bash
+nano combined.txt
+```
+or
+```bash
+vim combined.txt
+```
+* To exit nano, hit `ctrl+x`
+* To exit vim, type `:q` and then `enter`
 
 ## Case Sesitivity
 
@@ -208,11 +239,16 @@ A good practice for file naming on Unix systems is to use only lower-case letter
 ## File Manipulation
 
 #### Moving Files:
-- To move a file into a directory:
+- To move a file into an existing directory:
     ```bash
     mv combined.txt dir1
     ```
-- To move it back to the current directory:
+- You cannot move files into a directory that does not exist yet! You must first use `mkdir` to create the directory for which you'd like to move your file to
+- To move the file back to the current directory:
+    ```bash
+    mv dir1/combined.txt .
+    ```
+- We can use the `*` character to move everything from one directory to another:
     ```bash
     mv dir1/* .
     ```

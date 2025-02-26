@@ -1,5 +1,5 @@
 [book]
-authors = ["J. Simon Richard", "Fabio Hinojosa Jimenez", "Vishnu Kalavakuntala", "Mason Clay", "Charlie Strickland"]
+authors = ["J. Simon Richard", "Fabio Hinojosa Jimenez", "Vishnu Kalavakuntala", "Mason Clay", "Charlie Strickland", "Meir Manevich"]
 language = "en"
 multilingual = false
 src = "src"
