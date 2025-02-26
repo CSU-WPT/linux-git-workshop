@@ -114,7 +114,11 @@ mkdir dir1 dir2 dir3
 ```
 
 This command creates multiple directories at once. If you'd like to create nested directories, use the `-p` option (short for "make all **P**arent directories"):
-* `-p` is what is called an "option". Most linux commands have options, ways to customize the implimentation or scope of the execution of that command. To see a list of all of the options associated with any command, type that command followed by `--help`, like `mkdir --help` and you will get a list of the available options along with a brief description of each.
+* `-p` is what is called an "option". Most linux commands have options, ways to customize the implimentation or scope of the execution of that command. To see a list of all of the options associated with any command, type that command followed by `--help`, like
+```bash
+mkdir --help
+```
+and you will get a list of the available options along with a brief description of each.
 
 ```bash
 mkdir -p dir4/dir5/dir6
