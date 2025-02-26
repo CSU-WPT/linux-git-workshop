@@ -1,33 +1,27 @@
-# Using the Linux Terminal
+# Editing your files on Grail through VSCode
 
-The Linux command line is a text interface to your computer. Often referred to as the shell, terminal, console, prompt or various other names, it can give the appearance of being complex and confusing to use. However, the basics are actually quite simple and easy to learn.
+You can edit files that are on the CSU Linux computers directly through VSCode, instead of editing locally and then using `scp` each time you want to upload them.
 
-**Side note:** If you are interested in learning more about the history of the terminal, read [Section 1.2.1](./ch1.2.2-terminal-origins.md) for more information.
+## Accessing SSH through VSCode
 
-## Accessing the Terminal Over SSH
+Open VSCode and click on the "Open a Remote Window" button on the bottom left:
+![vscode connect to remote](./images/ssh_vscode_1_connect.png)
 
-Most of you are probably running Windows or MacOS on your personal computer, so you will need to access a linux terminal remotely using a Secure Shell (SSH) connection. On Windows, you can do this using [MobaXTerm](./ch1.3.1-mobaxterm.md), [PuTTY](./ch1.3.2-putty.md), or [WinSCP](./ch1.3.3-winscp.md). Read [Section 1.3](./ch1.3-ssh-turnin.md) for more information on how to access CSU's Linux servers.
+Then select the "Connect to Host" option:
+![vscode select ssh](./images/ssh_vscode_2_select_ssh.png)
 
-### Using Google Cloud Shell
+Type in your CSU Linux ssh path `username@spirit.eecs.csuohio.edu` and hit enter.
+This will open a new window and you will be prompted to choose the operating system. Select Linux:
+![vscode select linux](./images/ssh_vscode_3_select_linux.png)
 
-You also have the option of using Google Cloud Shell, which is free. Simply go to <https://shell.cloud.google.com/>. After the shell is provisioned, you should see the environment below:
+Enter your password:
+![vscode ssh password](./images/ssh_vscode_4_psswrd.png)
 
-![Google Cloud Shell](./images/google-cloud-shell.png)
+And you should be in! Next, select "Open Folder":
+![vscode open folder](./images/ssh_vscode_5_folder.png)
 
-Your linux shell should be available at the bottom of the page.
+Your home directory should autopopulate. Click the OK button and enter your password again, and allow VSCode to trust the authors if prompted. You should now have access to all of your files on CSU's Linux computers, with some new files there for VSCode to work:
+![vscode access to files](./images/ssh_vscode_6_access_to_files.png)
 
-
-## Running your First Command
-
-To run your first command, click inside the terminal window to ensure it's active, then type the following in lowercase and press Enter:
-
-    pwd
-
-
-This will display your current directory path (likely something like `/home/YOUR_USERNAME`), followed by the prompt text again.
-
-The prompt indicates the terminal is ready for your next command. When you see references to "command prompt" or "command line," they simply mean the place where you type commands in the terminal.
-
-When you run a command, any output will typically appear in the terminal. Some commands display a lot of text, while others may not show anything if they complete successfully. If a new prompt appears right away, the command likely succeeded.
-
-## Navigating the Linux Environment
+You can now edit any file by just selecting it through the file explorer on the left, and you can hit `ctrl+~` to open the terminal, which will be the spirit terminal, on which you cann compile and run your programs using gcc as you make changes in the editor:
+![vscode final](./images/ssh_vscode_7_final.png)
