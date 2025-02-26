@@ -169,11 +169,14 @@
 <li><a href="./ch1.3.2-putty.html">How to Submit Assignments using PuTTY on Windows</a></li>
 <li><a href="./ch1.3.3-winscp.html">How to Submit Assignments using WinSCP on Windows</a></li>
 </ul>
-<h2 id="csu-server-account-format"><a class="header" href="#csu-server-account-format">CSU Server Account Format</a></h2>
+<h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
+<h3 id="csu-linux-servers-user-account-format"><a class="header" href="#csu-linux-servers-user-account-format">CSU Linux Servers' User Account Format</a></h3>
+<p>If you are taking a CIS course this semester that requires Linux, you should have access to CSU's Linux servers. To login, use the following format for your credentials:</p>
 <p><strong>Username:</strong> <code>&lt;first two letters of your first name (lowercase)&gt;&lt;first six letters of your last name (lowercase)&gt;</code>
 <br />
 <strong>Password:</strong> <code>&lt;CSU ID&gt;&lt;first letter of your last name (uppercase)&gt;</code></p>
 <div class="warning">
+<p><strong>Warning:</strong></p>
 <p>Because your CSU ID is known by instructors and many other staff, <strong>you <em>MUST</em> change your password after the first time you log in</strong>.</p>
 </div>
 <h4 id="example"><a class="header" href="#example">Example</a></h4>
@@ -181,6 +184,20 @@
 <p><strong>Username:</strong> <code>jodoe</code> (since "Doe" is only 3 letters, we simply use those 3 letters)
 <br />
 <strong>Password:</strong> <code>1234567D</code></p>
+<h3 id="csu-linux-server-layout"><a class="header" href="#csu-linux-server-layout">CSU Linux Server Layout</a></h3>
+<p>CSU's Linux servers have the following networking layout:</p>
+<p><img src="images/csu-linux-server-layout.png" alt="CSU Linux Servers" /></p>
+<div class="warning">
+<p><strong>Warning:</strong></p>
+<p>You may not compile or run any of your own programs on Grail.</p>
+</div>
+<p>To access any of the servers "behind" grail and spirit, ssh into grail first, then ssh into the desired server. For example, to access chopin12, use these commands:</p>
+<pre><code class="language-bash">ssh jodoe@grail.eecs.csuohio.edu
+ssh chopin12
+</code></pre>
+<p>To see a list of all the CSU Linux computers available on CSU's network, ssh into grail, and then execute:</p>
+<pre><code class="language-bash">cat /etc/hosts
+</code></pre>
 
                     </main>
 

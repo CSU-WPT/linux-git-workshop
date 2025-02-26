@@ -308,24 +308,7 @@
 <p>The Linux command line is a text interface to your computer. Often referred to as the shell, terminal, console, prompt or various other names, it can give the appearance of being complex and confusing to use. However, the basics are actually quite simple and easy to learn.</p>
 <p><strong>Side note:</strong> If you are interested in learning more about the history of the terminal, read <a href="./ch1.2.10-terminal-origins.html">Section 1.2.10</a> for more information.</p>
 <h2 id="accessing-the-terminal-over-ssh"><a class="header" href="#accessing-the-terminal-over-ssh">Accessing the Terminal Over SSH</a></h2>
-<p>Most of you are probably running Windows or MacOS on your personal computer, so you will need to access a linux terminal remotely using a Secure Shell (SSH) connection. On Windows, you can do this using <a href="https://www.putty.org/">PuTTY</a>. Read <a href="./ch1.2.1-putty.html">Section 1.2.1</a> for more information.</p>
-<p>On MacOS (or Linux), you can create an SSH connection using the <code>ssh</code> command. For example, to connect to a remote server named <code>example.com</code> using the username <code>johndoe</code> and the password <code>mypassword</code>, you would run the following command:</p>
-<pre><code>ssh johndoe@example.com
-</code></pre>
-<p>You will be prompted to enter your password.</p>
-<h3 id="accessing-csus-linux-servers"><a class="header" href="#accessing-csus-linux-servers">Accessing CSU's Linux Servers</a></h3>
-<p>If you are taking a CIS course this semester that requires Linux, you should have access to CSU's Linux servers. These servers have the following layout:</p>
-<p><img src="./images/csu-linux-server-layout.png" alt="CSU Linux Servers" /></p>
-<p>Your username for all of CSU's servers is <code>&lt;first two letters of your first name&gt;&lt;up to the first six letters of your last name&gt;</code>. Your password (unless you have changed it) is <code>&lt;CSU ID&gt;&lt;capital initial of your last name</code>.</p>
-<p>If your name is John Doe and you CSU ID is 1234567, then you would have the following:</p>
-<p><strong>Username:</strong> <code>jodoe</code></p>
-<p><strong>Password:</strong> <code>1234567D</code></p>
-<p>To access <code>spirit</code> with the account above, use the following command:</p>
-<pre><code>ssh jodoe@spirit.eecs.csuohio.edu
-</code></pre>
-<p>To see a list of all the CSU Linux computers, ssh into grail, and then execute:</p>
-<pre><code>cat /etc/hosts
-</code></pre>
+<p>Most of you are probably running Windows or MacOS on your personal computer, so you will need to access a linux terminal remotely using a Secure Shell (SSH) connection. On Windows, you can do this using <a href="./ch1.3.1-mobaxterm.html">MobaXTerm</a>, <a href="./ch1.3.2-putty.html">PuTTY</a>, or <a href="./ch1.3.3-winscp.html">WinSCP</a>. Read <a href="./ch1.3-ssh-turnin.html">Section 1.3</a> for more information on how to access CSU's Linux servers.</p>
 <h3 id="using-google-cloud-shell"><a class="header" href="#using-google-cloud-shell">Using Google Cloud Shell</a></h3>
 <p>You also have the option of using Google Cloud Shell, which is free. Simply go to <a href="https://shell.cloud.google.com/">https://shell.cloud.google.com/</a>. After the shell is provisioned, you should see the environment below:</p>
 <p><img src="./images/google-cloud-shell.png" alt="Google Cloud Shell" /></p>
@@ -371,7 +354,8 @@ pwd
 pwd
 </code></pre>
 <p>To go directly to the "etc" directory from your home directory:</p>
-<pre><code>cd ../../etc
+<pre><code>cd # this is same as cd ~
+cd ../../etc
 pwd
 </code></pre>
 <p>Paths can be relative (depending on your current directory) or absolute (starting with <code>/</code>).</p>
@@ -387,10 +371,6 @@ cd etc
 <pre><code>cd ~
 cd ~/Desktop
 </code></pre>
-<p>To navigate directly to a specific folder, use an absolute path with <code>/home/USERNAME/</code>:</p>
-<pre><code>cd /home/USERNAME/Desktop
-</code></pre>
-<p>The prompt updates to reflect your current location in the file system, with <code>~</code> representing your home directory. Understanding absolute paths is key as you work with files and directories.</p>
 <h2 id="creating-and-opening-folders-and-files"><a class="header" href="#creating-and-opening-folders-and-files">Creating and Opening Folders and Files</a></h2>
 <p>To safely experiment with files, let's create a directory away from your home folder:</p>
 <pre><code class="language-bash">mkdir /tmp/tutorial
@@ -576,11 +556,14 @@ To search for a string in a file, use <code>grep</code>:
 <li><a href="./ch1.3.2-putty.html">How to Submit Assignments using PuTTY on Windows</a></li>
 <li><a href="./ch1.3.3-winscp.html">How to Submit Assignments using WinSCP on Windows</a></li>
 </ul>
-<h2 id="csu-server-account-format"><a class="header" href="#csu-server-account-format">CSU Server Account Format</a></h2>
+<h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
+<h3 id="csu-linux-servers-user-account-format"><a class="header" href="#csu-linux-servers-user-account-format">CSU Linux Servers' User Account Format</a></h3>
+<p>If you are taking a CIS course this semester that requires Linux, you should have access to CSU's Linux servers. To login, use the following format for your credentials:</p>
 <p><strong>Username:</strong> <code>&lt;first two letters of your first name (lowercase)&gt;&lt;first six letters of your last name (lowercase)&gt;</code>
 <br />
 <strong>Password:</strong> <code>&lt;CSU ID&gt;&lt;first letter of your last name (uppercase)&gt;</code></p>
 <div class="warning">
+<p><strong>Warning:</strong></p>
 <p>Because your CSU ID is known by instructors and many other staff, <strong>you <em>MUST</em> change your password after the first time you log in</strong>.</p>
 </div>
 <h4 id="example"><a class="header" href="#example">Example</a></h4>
@@ -588,6 +571,20 @@ To search for a string in a file, use <code>grep</code>:
 <p><strong>Username:</strong> <code>jodoe</code> (since "Doe" is only 3 letters, we simply use those 3 letters)
 <br />
 <strong>Password:</strong> <code>1234567D</code></p>
+<h3 id="csu-linux-server-layout"><a class="header" href="#csu-linux-server-layout">CSU Linux Server Layout</a></h3>
+<p>CSU's Linux servers have the following networking layout:</p>
+<p><img src="images/csu-linux-server-layout.png" alt="CSU Linux Servers" /></p>
+<div class="warning">
+<p><strong>Warning:</strong></p>
+<p>You may not compile or run any of your own programs on Grail.</p>
+</div>
+<p>To access any of the servers "behind" grail and spirit, ssh into grail first, then ssh into the desired server. For example, to access chopin12, use these commands:</p>
+<pre><code class="language-bash">ssh jodoe@grail.eecs.csuohio.edu
+ssh chopin12
+</code></pre>
+<p>To see a list of all the CSU Linux computers available on CSU's network, ssh into grail, and then execute:</p>
+<pre><code class="language-bash">cat /etc/hosts
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h3 id="how-to-submit-assignments-using-mobaxterm-on-windows"><a class="header" href="#how-to-submit-assignments-using-mobaxterm-on-windows">How to Submit Assignments using MobaXterm on Windows</a></h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HoHwSs5IW5k?si=MuFFw6-7c2C-gQKq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <h2 id="guide"><a class="header" href="#guide">Guide</a></h2>
