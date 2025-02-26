@@ -1,10 +1,10 @@
-# Editing your files on Grail through VSCode
+# Editing your files on Grail through VS Code
 
-You can edit files that are on the CSU Linux computers directly through VSCode, instead of editing locally and then using `scp` each time you want to upload them.
+You can edit files that are on the CSU Linux computers directly through VS Code, instead of editing locally and then using `scp` each time you want to upload them.
 
-## Accessing SSH through VSCode
+## Accessing SSH through VS Code
 
-Open VSCode and click on the "Open a Remote Window" button on the bottom left:
+Open VS Code and click on the "Open a Remote Window" button on the bottom left:
 ![vscode connect to remote](./images/ssh_vscode_1_connect.png)
 
 Then select the "Connect to Host" option:
@@ -20,7 +20,7 @@ Enter your password:
 And you should be in! Next, select "Open Folder":
 ![vscode open folder](./images/ssh_vscode_5_folder.png)
 
-Your home directory should autopopulate. Click the OK button and enter your password again, and allow VSCode to trust the authors if prompted. You should now have access to all of your files on CSU's Linux computers, with some new files there for VSCode to work:
+Your home directory should autopopulate. Click the OK button and enter your password again, and allow VS Code to trust the authors if prompted. You should now have access to all of your files on CSU's Linux computers, with some new files there for VS Code to work:
 ![vscode access to files](./images/ssh_vscode_6_access_to_files.png)
 
 You can now edit any file by just selecting it through the file explorer on the left, and you can hit `ctrl+~` to open the terminal, which will be the spirit terminal, on which you cann compile and run your programs using gcc as you make changes in the editor:
