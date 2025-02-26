@@ -2,7 +2,7 @@
 
 The Linux command line is a text interface to your computer. Often referred to as the shell, terminal, console, prompt or various other names, it can give the appearance of being complex and confusing to use. However, the basics are actually quite simple and easy to learn.
 
-**Side note:** If you are interested in learning more about the history of the terminal, read [Section 1.2.10](./ch1.2.10-terminal-origins.md) for more information.
+**Side note:** If you are interested in learning more about the history of the terminal, read [Section 1.2.1](./ch1.2.2-terminal-origins.md) for more information.
 
 ## Accessing the Terminal Over SSH
 
