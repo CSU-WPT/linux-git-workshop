@@ -32,7 +32,16 @@ When you run a command, any output will typically appear in the terminal. Some c
 
 ## Navigating the Linux Environment
 
-The `pwd` command (print working directory) shows your current location in the file system. The working directory is where file operations take place by default unless specified otherwise. To check where you are, use `pwd`.
+### The Linux Essentials
+* The `pwd` command (print working directory) shows your current location in the file system. The working directory is where file operations take place by default unless specified otherwise. To check where you are, use `pwd`.
+
+* To see other directories available from the directory that you are in, use `ls`.
+
+* To autocomplete a directory or filename, type the first couple letters and then hit `tab`. If there are multiple files that start with those letters, nothing will happen, hit `tab` again and it will show all the available files that start with those letters.
+
+* A quick way to run similar commands to the one you just ran is to hit the up arrow, which will autofill the previous command, and then you can make a small change and run it again. The up arrow accesses a history of all the commands you've used recently, so you can keep hitting it to see previous commands.
+
+* Pressing `ctrl+c` at any time will interrupt the current execution, if there is any, and return to the command line. This is useful for running C programs, especially if you run into an infinite loop. Just execute `ctrl+c` and it will stop.
 
 To change the working directory, use `cd` (change directory):
 
