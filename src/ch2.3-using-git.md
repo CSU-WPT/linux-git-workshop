@@ -1,8 +1,8 @@
 # Using git
 
-### Creating a repository locally
+### Creating a repository locally (Optional)
 
-Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in [Section 2.2](./ch2.2-create-github-account.md)) or by creating one locally using the following commands:
+If you were not able to create a GitHub repository and clone it locally (described in [Section 2.2](./ch2.2-create-github-account.md)), before you proceed, you will need to create a local git repository. You can do that by using the following commands:
 
 ```bash
 mkdir my_repo
