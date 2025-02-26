@@ -40,11 +40,16 @@ For Windows computers with Windows 10 or 11, this is an easy way to use the Ubun
   ```
 * Close the window
 * You can now access Ubuntu
-   * from the Start menu by selecting/searching for WSL
+   * from the Start menu by selecting/searching for WSL or Ubuntu
    * by opening the terminal and running the command:
      ```
      wsl
      ```
+     or
+     ```
+     ubuntu
+     ```
+        * run the `exit` command to return to the windows terminal
    * by selecting Ubuntu from the dropdown menu at the top of the terminal window
 * Now that it is all set up, you access and manipulate all the files on your computer using Ubuntu
 * This can be very useful for testing C code that needs to run on the CSU Linux computers for homework.
