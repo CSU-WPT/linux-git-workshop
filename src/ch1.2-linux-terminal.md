@@ -193,6 +193,18 @@ less combined.txt
 
 You can navigate using arrow keys and exit with `q`. This basic workflow helps in creating and managing files with content efficiently.
 
+## Vim & Nano
+These tools are complex enough to deserve entire pages of their own, but just to get your toes wet, if you'd like to properly edit files in the terminal, you can do so using the `nano` or `vim` commands. These commands will start the nano or vim programs, and you will not be able to use normal linux commands. Don't panic!
+```bash
+nano combined.txt
+```
+or
+```bash
+vim combined.txt
+```
+* To exit nano, hit `ctrl+x`
+* To exit vim, type `:q` and then `enter`
+
 ## Case Sesitivity
 
 Unix systems are case-sensitive, meaning files like `A.txt` and `a.txt` are treated as entirely different. For example:
@@ -223,7 +235,7 @@ A good practice for file naming on Unix systems is to use only lower-case letter
     ```bash
     mv dir1/combined.txt .
     ```
-- We can use the `*` character to move eveything from one directory to another:
+- We can use the `*` character to move everything from one directory to another:
     ```bash
     mv dir1/* .
     ```
