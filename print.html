@@ -293,10 +293,16 @@
 <li>Close the window</li>
 <li>You can now access Ubuntu
 <ul>
-<li>from the Start menu by selecting/searching for WSL</li>
+<li>from the Start menu by selecting/searching for WSL or Ubuntu</li>
 <li>by opening the terminal and running the command:
 <pre><code>wsl
 </code></pre>
+or
+<pre><code>ubuntu
+</code></pre>
+<ul>
+<li>run the <code>exit</code> command to return to the windows terminal</li>
+</ul>
 </li>
 <li>by selecting Ubuntu from the dropdown menu at the top of the terminal window</li>
 </ul>
@@ -306,7 +312,7 @@
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-the-linux-terminal"><a class="header" href="#using-the-linux-terminal">Using the Linux Terminal</a></h1>
 <p>The Linux command line is a text interface to your computer. Often referred to as the shell, terminal, console, prompt or various other names, it can give the appearance of being complex and confusing to use. However, the basics are actually quite simple and easy to learn.</p>
-<p><strong>Side note:</strong> If you are interested in learning more about the history of the terminal, read <a href="./ch1.2.10-terminal-origins.html">Section 1.2.10</a> for more information.</p>
+<p><strong>Side note:</strong> If you are interested in learning more about the history of the terminal, read <a href="./ch1.2.2-terminal-origins.html">Section 1.2.1</a> for more information.</p>
 <h2 id="accessing-the-terminal-over-ssh"><a class="header" href="#accessing-the-terminal-over-ssh">Accessing the Terminal Over SSH</a></h2>
 <p>Most of you are probably running Windows or MacOS on your personal computer, so you will need to access a linux terminal remotely using a Secure Shell (SSH) connection. On Windows, you can do this using <a href="./ch1.3.1-mobaxterm.html">MobaXTerm</a>, <a href="./ch1.3.2-putty.html">PuTTY</a>, or <a href="./ch1.3.3-winscp.html">WinSCP</a>. Read <a href="./ch1.3-ssh-turnin.html">Section 1.3</a> for more information on how to access CSU's Linux servers.</p>
 <h3 id="using-google-cloud-shell"><a class="header" href="#using-google-cloud-shell">Using Google Cloud Shell</a></h3>
@@ -321,7 +327,24 @@
 <p>The prompt indicates the terminal is ready for your next command. When you see references to "command prompt" or "command line," they simply mean the place where you type commands in the terminal.</p>
 <p>When you run a command, any output will typically appear in the terminal. Some commands display a lot of text, while others may not show anything if they complete successfully. If a new prompt appears right away, the command likely succeeded.</p>
 <h2 id="navigating-the-linux-environment"><a class="header" href="#navigating-the-linux-environment">Navigating the Linux Environment</a></h2>
+<h3 id="the-linux-essentials"><a class="header" href="#the-linux-essentials">The Linux Essentials</a></h3>
+<ul>
+<li>
 <p>The <code>pwd</code> command (print working directory) shows your current location in the file system. The working directory is where file operations take place by default unless specified otherwise. To check where you are, use <code>pwd</code>.</p>
+</li>
+<li>
+<p>To see other directories available from the directory that you are in, use <code>ls</code>.</p>
+</li>
+<li>
+<p>To autocomplete a directory or filename, type the first couple letters and then hit <code>tab</code>. If there are multiple files that start with those letters, nothing will happen, hit <code>tab</code> again and it will show all the available files that start with those letters.</p>
+</li>
+<li>
+<p>A quick way to run similar commands to the one you just ran is to hit the up arrow, which will autofill the previous command, and then you can make a small change and run it again. The up arrow accesses a history of all the commands you've used recently, so you can keep hitting it to see previous commands.</p>
+</li>
+<li>
+<p>Pressing <code>ctrl+c</code> at any time will interrupt the current execution, if there is any, and return to the command line. This is useful for running C programs, especially if you run into an infinite loop. Just execute <code>ctrl+c</code> and it will stop.</p>
+</li>
+</ul>
 <p>To change the working directory, use <code>cd</code> (change directory):</p>
 <ul>
 <li>
@@ -341,6 +364,9 @@ pwd
 <pre><code>cd ..
 pwd
 </code></pre>
+</li>
+<li>
+<p>Just one <code>.</code> is used to refer to the current directory. This will be useful later on when we are moving files between directories.</p>
 </li>
 <li>
 <p>To return to your home directory (also represented by the <code>~</code> path):</p>
@@ -380,6 +406,12 @@ cd /tmp/tutorial
 <pre><code class="language-bash">mkdir dir1 dir2 dir3
 </code></pre>
 <p>This command creates multiple directories at once. If you'd like to create nested directories, use the <code>-p</code> option (short for "make all <strong>P</strong>arent directories"):</p>
+<ul>
+<li><code>-p</code> is what is called an "option". Most linux commands have options, ways to customize the implimentation or scope of the execution of that command. To see a list of all of the options associated with any command, type that command followed by <code>--help</code> and you will get a list of the available options along with a brief description of each.
+<pre><code class="language-bash">mkdir --help
+</code></pre>
+</li>
+</ul>
 <pre><code class="language-bash">mkdir -p dir4/dir5/dir6
 </code></pre>
 <p>Here, <code>-p</code> ensures parent directories (<code>dir4</code> and <code>dir5</code>) are created if they don't exist.</p>
@@ -401,13 +433,25 @@ mkdir folder\ 3
 <p>The <code>echo</code> command can also create files with content:</p>
 <pre><code class="language-bash">echo "This is a test" &gt; test_1.txt
 echo "This is a second test" &gt; test_2.txt
-echo "This is a third test" &gt; test_3.txt
+echo "This is a third test" &gt; test_2a.txt
 </code></pre>
 <p>You can view their contents using <code>cat</code>. To combine multiple files:</p>
-<pre><code class="language-bash">cat test_1.txt test_2.txt test_3.txt &gt; combined.txt
+<pre><code class="language-bash">cat test_1.txt test_2.txt test_2a.txt &gt; combined.txt
 cat combined.txt
 </code></pre>
-<p>Wildcards simplify commands when file names follow patterns. For example, these commands all achieve the same result:</p>
+<p>Wildcards simplify commands when file names follow patterns.</p>
+<ul>
+<li><code>?</code> will accept any filename with just one character that follows that pattern before the <code>?</code>
+<ul>
+<li>So using just <code>?</code> will grab <code>test_1</code> and <code>test_2</code> but not <code>test_2a</code></li>
+</ul>
+</li>
+<li><code>*</code> will accept any filename with any amount of characters that follows the pattern before it, so long as it begins with the preceding name.
+<ul>
+<li>This will grab all three files, since they all follow the same initial pattern</li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-bash">cat test_?.txt
 cat test_*
 </code></pre>
@@ -419,6 +463,17 @@ cat combined.txt
 <pre><code class="language-bash">less combined.txt
 </code></pre>
 <p>You can navigate using arrow keys and exit with <code>q</code>. This basic workflow helps in creating and managing files with content efficiently.</p>
+<h2 id="vim--nano"><a class="header" href="#vim--nano">Vim &amp; Nano</a></h2>
+<p>These tools are complex enough to deserve entire pages of their own, but just to get your toes wet, if you'd like to properly edit files in the terminal, you can do so using the <code>nano</code> or <code>vim</code> commands. These commands will start the nano or vim programs, and you will not be able to use normal linux commands. Don't panic!</p>
+<pre><code class="language-bash">nano combined.txt
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">vim combined.txt
+</code></pre>
+<ul>
+<li>To exit nano, hit <code>ctrl+x</code></li>
+<li>To exit vim, type <code>:q</code> and then <code>enter</code></li>
+</ul>
 <h2 id="case-sesitivity"><a class="header" href="#case-sesitivity">Case Sesitivity</a></h2>
 <p>Unix systems are case-sensitive, meaning files like <code>A.txt</code> and <code>a.txt</code> are treated as entirely different. For example:</p>
 <pre><code class="language-bash">echo "Lower case" &gt; a.txt
@@ -432,11 +487,16 @@ echo "Mixed case" &gt; A.txt
 <h2 id="file-manipulation"><a class="header" href="#file-manipulation">File Manipulation</a></h2>
 <h4 id="moving-files"><a class="header" href="#moving-files">Moving Files:</a></h4>
 <ul>
-<li>To move a file into a directory:
+<li>To move a file into an existing directory:
 <pre><code class="language-bash">mv combined.txt dir1
 </code></pre>
 </li>
-<li>To move it back to the current directory:
+<li>You cannot move files into a directory that does not exist yet! You must first use <code>mkdir</code> to create the directory for which you'd like to move your file to</li>
+<li>To move the file back to the current directory:
+<pre><code class="language-bash">mv dir1/combined.txt .
+</code></pre>
+</li>
+<li>We can use the <code>*</code> character to move everything from one directory to another:
 <pre><code class="language-bash">mv dir1/* .
 </code></pre>
 </li>
@@ -547,6 +607,24 @@ To search for a string in a file, use <code>grep</code>:
 <p>Text is resource-light, enabling users to interact efficiently with programs even over slow network connections. The command structure was concise to minimize keystrokes, contributing to the continued popularity of text interfaces.</p>
 <p>Unix users managed file operations such as creating, renaming, and organizing files using a textual interface. Each task required specific commands (e.g., <code>cd</code> for changing directories and <code>ls</code> for listing contents). These commands were coordinated by a master program known as the “shell,” which also allowed for command chaining and automation through shell scripts. The original Unix shell, <code>sh</code>, has evolved into modern shells like <code>bash</code>.</p>
 <p>Linux is a descendant of Unix, designed to function similarly, allowing many old Unix programs to run effectively. While old terminals could connect to modern Linux systems, it is more common to use software terminals that provide a Unix-style text interface alongside graphical programs.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="editing-your-files-on-grail-through-vscode"><a class="header" href="#editing-your-files-on-grail-through-vscode">Editing your files on Grail through VSCode</a></h1>
+<p>You can edit files that are on the CSU Linux computers directly through VSCode, instead of editing locally and then using <code>scp</code> each time you want to upload them.</p>
+<h2 id="accessing-ssh-through-vscode"><a class="header" href="#accessing-ssh-through-vscode">Accessing SSH through VSCode</a></h2>
+<p>Open VSCode and click on the "Open a Remote Window" button on the bottom left:
+<img src="./images/ssh_vscode_1_connect.png" alt="vscode connect to remote" /></p>
+<p>Then select the "Connect to Host" option:
+<img src="./images/ssh_vscode_2_select_ssh.png" alt="vscode select ssh" /></p>
+<p>Type in your CSU Linux ssh path <code>username@spirit.eecs.csuohio.edu</code> and hit enter.
+This will open a new window and you will be prompted to choose the operating system. Select Linux:
+<img src="./images/ssh_vscode_3_select_linux.png" alt="vscode select linux" /></p>
+<p>Enter your password:
+<img src="./images/ssh_vscode_4_psswrd.png" alt="vscode ssh password" /></p>
+<p>And you should be in! Next, select "Open Folder":
+<img src="./images/ssh_vscode_5_folder.png" alt="vscode open folder" /></p>
+<p>Your home directory should autopopulate. Click the OK button and enter your password again, and allow VSCode to trust the authors if prompted. You should now have access to all of your files on CSU's Linux computers, with some new files there for VSCode to work:
+<img src="./images/ssh_vscode_6_access_to_files.png" alt="vscode access to files" /></p>
+<p>You can now edit any file by just selecting it through the file explorer on the left, and you can hit <code>ctrl+~</code> to open the terminal, which will be the spirit terminal, on which you cann compile and run your programs using gcc as you make changes in the editor:
+<img src="./images/ssh_vscode_7_final.png" alt="vscode final" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-submit-assignments-using-ssh-on-windows"><a class="header" href="#how-to-submit-assignments-using-ssh-on-windows">How to Submit Assignments using SSH on Windows</a></h1>
 <p>Several of the Computer Science classes at <strong>Cleveland State University</strong> use the custom <code>turnin</code> command available on the <code>grail.eecs.csuohio.edu</code> server to turn in assignments.</p>
 <p>On Windows, we recommend using <a href="https://mobaxterm.mobatek.net/">Mobaxterm</a> as your SSH client. We also provide guides for using <a href="https://www.putty.org/">PuTTY</a> and <a href="https://winscp.net/eng/index.php">WinSCP</a>.</p>
