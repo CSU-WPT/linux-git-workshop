@@ -53,6 +53,7 @@ To change the working directory, use `cd` (change directory):
   cd ..
   pwd
   ```
+- Just one `.` is used to refer to the current directory. This will be useful later on when we are moving files between directories.
 
 - To return to your home directory (also represented by the `~` path):
   ```
@@ -213,11 +214,16 @@ A good practice for file naming on Unix systems is to use only lower-case letter
 ## File Manipulation
 
 #### Moving Files:
-- To move a file into a directory:
+- To move a file into an existing directory:
     ```bash
     mv combined.txt dir1
     ```
-- To move it back to the current directory:
+- You cannot move files into a directory that does not exist yet! You must first use `mkdir` to create the directory for which you'd like to move your file to
+- To move the file back to the current directory:
+    ```bash
+    mv dir1/combined.txt .
+    ```
+- We can use the `*` character to move eveything from one directory to another:
     ```bash
     mv dir1/* .
     ```
