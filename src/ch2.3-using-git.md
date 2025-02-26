@@ -56,7 +56,18 @@ To switch branches
 
 ![Drawing-0](./images/IMG_36D4CB635079-1.jpeg)
 
-### Merging branches
+### Merging branches and Pull Requests
+
+This is how you create a Pull Request for your branch on GitHub:
+
+- On GitHub, navigate to the main page of the repository.
+- In the "Branch" menu, choose the branch that contains your commits. ![Switch-Branch](https://docs.github.com/assets/cb-29825/mw-1440/images/help/pull_requests/branch-dropdown.webp)
+- Above the list of files, in the yellow banner, click Compare & pull request to create a pull request for the associated branch.
+- Use the base branch dropdown menu to select the branch you'd like to merge your changes into, then use the compare branch drop-down menu to choose the topic branch you made your changes in.
+- Type a title and description for your pull request.
+- To create a pull request that is ready for review, click Create Pull Request.
+
+After you're done reviewing the code, you can then merge the two branches together.
 
 To bring the latest changes in `branch_a` into `main`, we would first switch to the main branch...
 
