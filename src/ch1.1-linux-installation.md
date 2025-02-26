@@ -41,7 +41,7 @@ For Windows computers with Windows 10 or 11, this is an easy way to use the Ubun
 * Close the window
 * You can now access Ubuntu
    * from the Start menu by selecting/searching for WSL
-   * by opening the terminla and running the command:
+   * by opening the terminal and running the command:
      ```
      wsl
      ```
