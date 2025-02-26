@@ -33,7 +33,18 @@ For Windows computers with Windows 10 or 11, this is an easy way to use the Ubun
    ```
    wsl --install
    ```
-* Once it is installed, you can then go ahead and set up our Linux username and password
-* You may need to restart before you can use the Ubuntu terminal\
-* Once it is all set up, you access and manipulate all the files on your computer using Ubuntu
+* Once it is installed, restart, and then you can then go ahead and set up our Linux username and password when it comes back up
+* Once you are signed into to your Ubuntu account, update and upgrade the system
+  ```
+  sudo apt update && sudo apt upgrade -y
+  ```
+* Close the window
+* You can now access Ubuntu
+   * from the Start menu by selecting/searching for WSL
+   * by opening the terminla and running the command:
+     ```
+     wsl
+     ```
+   * by selecting Ubuntu from the dropdown menu at the top of the terminal window
+* Now that it is all set up, you access and manipulate all the files on your computer using Ubuntu
 * This can be very useful for testing C code that needs to run on the CSU Linux computers for homework.
