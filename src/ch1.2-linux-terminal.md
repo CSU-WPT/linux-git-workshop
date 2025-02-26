@@ -6,35 +6,7 @@ The Linux command line is a text interface to your computer. Often referred to a
 
 ## Accessing the Terminal Over SSH
 
-Most of you are probably running Windows or MacOS on your personal computer, so you will need to access a linux terminal remotely using a Secure Shell (SSH) connection. On Windows, you can do this using [PuTTY](https://www.putty.org/). Read [Section 1.2.1](./ch1.2.1-putty.md) for more information.
-
-On MacOS (or Linux), you can create an SSH connection using the `ssh` command. For example, to connect to a remote server named `example.com` using the username `johndoe` and the password `mypassword`, you would run the following command:
-
-    ssh johndoe@example.com
-
-You will be prompted to enter your password.
-
-### Accessing CSU's Linux Servers
-
-If you are taking a CIS course this semester that requires Linux, you should have access to CSU's Linux servers. These servers have the following layout:
-
-![CSU Linux Servers](./images/csu-linux-server-layout.png)
-
-Your username for all of CSU's servers is `<first two letters of your first name><up to the first six letters of your last name>`. Your password (unless you have changed it) is `<CSU ID><capital initial of your last name`.
-
-If your name is John Doe and you CSU ID is 1234567, then you would have the following:
-
-**Username:** `jodoe`
-
-**Password:** `1234567D`
-
-To access `spirit` with the account above, use the following command:
-
-    ssh jodoe@spirit.eecs.csuohio.edu
-
-To see a list of all the CSU Linux computers, ssh into grail, and then execute:
-
-    cat /etc/hosts
+Most of you are probably running Windows or MacOS on your personal computer, so you will need to access a linux terminal remotely using a Secure Shell (SSH) connection. On Windows, you can do this using [MobaXTerm](./ch1.3.1-mobaxterm.md), [PuTTY](./ch1.3.2-putty.md), or [WinSCP](./ch1.3.3-winscp.md). Read [Section 1.3](./ch1.3-ssh-turnin.md) for more information on how to access CSU's Linux servers.
 
 ### Using Google Cloud Shell
 
@@ -96,6 +68,7 @@ pwd
 
 To go directly to the "etc" directory from your home directory:
 ```
+cd # this is same as cd ~
 cd ../../etc
 pwd
 ```
@@ -123,14 +96,6 @@ This will always take you to the "etc" directory, no matter where you are. Simil
 cd ~
 cd ~/Desktop
 ```
-
-To navigate directly to a specific folder, use an absolute path with `/home/USERNAME/`:
-
-```
-cd /home/USERNAME/Desktop
-```
-
-The prompt updates to reflect your current location in the file system, with `~` representing your home directory. Understanding absolute paths is key as you work with files and directories.
 
 ## Creating and Opening Folders and Files
 
