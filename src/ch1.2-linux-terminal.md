@@ -113,6 +113,7 @@ mkdir dir1 dir2 dir3
 ```
 
 This command creates multiple directories at once. If you'd like to create nested directories, use the `-p` option (short for "make all **P**arent directories"):
+* `-p` is what is called an "option". Most linux commands have options, ways to customize the implimentation or scope of the execution of that command. To see a list of all of the options associated with any command, type that command followed by `--help`, like `mkdir --help` and you will get a list of the available options along with a brief description of each.
 
 ```bash
 mkdir -p dir4/dir5/dir6
@@ -155,17 +156,21 @@ The `echo` command can also create files with content:
 ```bash
 echo "This is a test" > test_1.txt
 echo "This is a second test" > test_2.txt
-echo "This is a third test" > test_3.txt
+echo "This is a third test" > test_2a.txt
 ```
 
 You can view their contents using `cat`. To combine multiple files:
 
 ```bash
-cat test_1.txt test_2.txt test_3.txt > combined.txt
+cat test_1.txt test_2.txt test_2a.txt > combined.txt
 cat combined.txt
 ```
 
-Wildcards simplify commands when file names follow patterns. For example, these commands all achieve the same result:
+Wildcards simplify commands when file names follow patterns.
+* `?` will accept any filename with just one character that follows that pattern before the `?`
+    * So using just `?` will grab `test_1` and `test_2` but not `test_2a`
+* `*` will accept any filename with any amount of characters that follows the pattern before it, so long as it begins with the preceding name.
+    * This will grab all three files, since they all follow the same initial pattern  
 
 ```bash
 cat test_?.txt
