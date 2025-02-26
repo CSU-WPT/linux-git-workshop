@@ -8,7 +8,15 @@
 
 ## MacOS
 
-MacOS will already have git installed by default.
+There is a good chance it is already installed on your machine. Try running this command to check
+
+```bash
+git --version
+```
+
+If it is not installed, it will prompt to install the Command Line Tools. Click "Install" in the pop-up window.
+
+Once finished, the Git version will be displayed in the Terminal, confirming a successful installation.
 
 ## Linux
 
@@ -33,7 +41,6 @@ sudo pacman -S git
 ```
 
 For other Linux distros you can use the same name for the package `git-all`
-
 
 # After the installation
 
