@@ -810,7 +810,11 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 </li>
 </ol>
 <h2 id="macos"><a class="header" href="#macos">MacOS</a></h2>
-<p>MacOS will already have git installed by default.</p>
+<p>There is a good chance it is already installed on your machine. Try running this command to check</p>
+<pre><code class="language-bash">git --version
+</code></pre>
+<p>If it is not installed, it will prompt to install the Command Line Tools. Click "Install" in the pop-up window.</p>
+<p>Once finished, the Git version will be displayed in the Terminal, confirming a successful installation.</p>
 <h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
 <p>Install it using your favorite package manager.</p>
 <h4 id="debian--ubuntu-apt"><a class="header" href="#debian--ubuntu-apt">Debian / Ubuntu (apt)</a></h4>
@@ -908,34 +912,6 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 </li>
 </ol>
 <p>Your repository is now ready! You can start adding files, cloning it to your local machine, or collaborating with others.</p>
-<h2 id="cloning-a-repository-locally"><a class="header" href="#cloning-a-repository-locally">Cloning a Repository Locally</a></h2>
-<p>To clone a repository locally, follow these steps:</p>
-<ol>
-<li>First, navigate to the directory where you want to clone the repository:
-<pre><code class="language-bash">cd /path/to/your/directory
-</code></pre>
-</li>
-<li>Get the repository URL:
-<ul>
-<li>Go to the GitHub repository page.</li>
-<li>Click on the Code button.</li>
-<li>Under Clone, copy the URL.
-<blockquote>
-<p>    <img src="https://github.com/user-attachments/assets/90c30692-d88a-4d0b-a31c-36df8c8bd9a2" width="300"></p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>Clone the repository by using the git clone command followed by the copied repository URL:
-<pre><code class="language-bash">git clone https://github.com/username/repository-name.git
-</code></pre>
-</li>
-<li>This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
-<pre><code class="language-bash">cd repository-name
-You can now work with the repository locally.
-</code></pre>
-</li>
-</ol>
 <h1 id="connect-github-account-with-your-local-git-with-ssh-keys"><a class="header" href="#connect-github-account-with-your-local-git-with-ssh-keys">Connect GitHub Account with your Local git with SSH Keys</a></h1>
 <h2 id="start-the-ssh-agent-service"><a class="header" href="#start-the-ssh-agent-service">Start the SSH Agent Service</a></h2>
 <p>Windows</p>
@@ -982,9 +958,37 @@ You can now work with the repository locally.
 <p>Successful connection should say:</p>
 <pre><code>Hi &lt;username&gt;! You've successfully authenticated, but GitHub does not provide shell access.
 </code></pre>
+<h2 id="cloning-a-repository-locally"><a class="header" href="#cloning-a-repository-locally">Cloning a Repository Locally</a></h2>
+<p>To clone a repository locally, follow these steps:</p>
+<ol>
+<li>First, navigate to the directory where you want to clone the repository:
+<pre><code class="language-bash">cd /path/to/your/directory
+</code></pre>
+</li>
+<li>Get the repository URL:
+<ul>
+<li>Go to the GitHub repository page.</li>
+<li>Click on the Code button.</li>
+<li>Under Clone, click on the SSH Tab, and copy the URL.
+<blockquote>
+<p>    <img src="images/copy-ssh-link.png" width="300"></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Clone the repository by using the git clone command followed by the copied repository URL:
+<pre><code class="language-bash">git clone https://github.com/username/repository-name.git
+</code></pre>
+</li>
+<li>This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
+<pre><code class="language-bash">cd repository-name
+You can now work with the repository locally.
+</code></pre>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-git"><a class="header" href="#using-git">Using git</a></h1>
-<h3 id="creating-a-repository-locally"><a class="header" href="#creating-a-repository-locally">Creating a repository locally</a></h3>
-<p>Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in <a href="./ch2.2-create-github-account.html">Section 2.2</a>) or by creating one locally using the following commands:</p>
+<h3 id="creating-a-repository-locally-optional"><a class="header" href="#creating-a-repository-locally-optional">Creating a repository locally (Optional)</a></h3>
+<p>If you were not able to create a GitHub repository and clone it locally (described in <a href="./ch2.2-create-github-account.html">Section 2.2</a>), before you proceed, you will need to create a local git repository. You can do that by using the following commands:</p>
 <pre><code class="language-bash">mkdir my_repo
 cd my_repo
 git init
@@ -1012,7 +1016,17 @@ git init
 <p>To switch branches</p>
 <p><code>git checkout &lt;name_of_the_branch&gt;</code></p>
 <p><img src="./images/IMG_36D4CB635079-1.jpeg" alt="Drawing-0" /></p>
-<h3 id="merging-branches"><a class="header" href="#merging-branches">Merging branches</a></h3>
+<h3 id="merging-branches-and-pull-requests"><a class="header" href="#merging-branches-and-pull-requests">Merging branches and Pull Requests</a></h3>
+<p>This is how you create a Pull Request for your branch on GitHub:</p>
+<ul>
+<li>On GitHub, navigate to the main page of the repository.</li>
+<li>In the "Branch" menu, choose the branch that contains your commits. <img src="https://docs.github.com/assets/cb-29825/mw-1440/images/help/pull_requests/branch-dropdown.webp" alt="Switch-Branch" /></li>
+<li>Above the list of files, in the yellow banner, click Compare &amp; pull request to create a pull request for the associated branch.</li>
+<li>Use the base branch dropdown menu to select the branch you'd like to merge your changes into, then use the compare branch drop-down menu to choose the topic branch you made your changes in.</li>
+<li>Type a title and description for your pull request.</li>
+<li>To create a pull request that is ready for review, click Create Pull Request.</li>
+</ul>
+<p>After you're done reviewing the code, you can then merge the two branches together.</p>
 <p>To bring the latest changes in <code>branch_a</code> into <code>main</code>, we would first switch to the main branch...</p>
 <pre><code class="language-bash">git checkout main
 </code></pre>

@@ -232,34 +232,6 @@
 </li>
 </ol>
 <p>Your repository is now ready! You can start adding files, cloning it to your local machine, or collaborating with others.</p>
-<h2 id="cloning-a-repository-locally"><a class="header" href="#cloning-a-repository-locally">Cloning a Repository Locally</a></h2>
-<p>To clone a repository locally, follow these steps:</p>
-<ol>
-<li>First, navigate to the directory where you want to clone the repository:
-<pre><code class="language-bash">cd /path/to/your/directory
-</code></pre>
-</li>
-<li>Get the repository URL:
-<ul>
-<li>Go to the GitHub repository page.</li>
-<li>Click on the Code button.</li>
-<li>Under Clone, copy the URL.
-<blockquote>
-<p>    <img src="https://github.com/user-attachments/assets/90c30692-d88a-4d0b-a31c-36df8c8bd9a2" width="300"></p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>Clone the repository by using the git clone command followed by the copied repository URL:
-<pre><code class="language-bash">git clone https://github.com/username/repository-name.git
-</code></pre>
-</li>
-<li>This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
-<pre><code class="language-bash">cd repository-name
-You can now work with the repository locally.
-</code></pre>
-</li>
-</ol>
 <h1 id="connect-github-account-with-your-local-git-with-ssh-keys"><a class="header" href="#connect-github-account-with-your-local-git-with-ssh-keys">Connect GitHub Account with your Local git with SSH Keys</a></h1>
 <h2 id="start-the-ssh-agent-service"><a class="header" href="#start-the-ssh-agent-service">Start the SSH Agent Service</a></h2>
 <p>Windows</p>
@@ -306,6 +278,34 @@ You can now work with the repository locally.
 <p>Successful connection should say:</p>
 <pre><code>Hi &lt;username&gt;! You've successfully authenticated, but GitHub does not provide shell access.
 </code></pre>
+<h2 id="cloning-a-repository-locally"><a class="header" href="#cloning-a-repository-locally">Cloning a Repository Locally</a></h2>
+<p>To clone a repository locally, follow these steps:</p>
+<ol>
+<li>First, navigate to the directory where you want to clone the repository:
+<pre><code class="language-bash">cd /path/to/your/directory
+</code></pre>
+</li>
+<li>Get the repository URL:
+<ul>
+<li>Go to the GitHub repository page.</li>
+<li>Click on the Code button.</li>
+<li>Under Clone, click on the SSH Tab, and copy the URL.
+<blockquote>
+<p>    <img src="images/copy-ssh-link.png" width="300"></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Clone the repository by using the git clone command followed by the copied repository URL:
+<pre><code class="language-bash">git clone https://github.com/username/repository-name.git
+</code></pre>
+</li>
+<li>This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
+<pre><code class="language-bash">cd repository-name
+You can now work with the repository locally.
+</code></pre>
+</li>
+</ol>
 
                     </main>
 
