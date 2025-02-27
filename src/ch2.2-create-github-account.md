@@ -15,7 +15,7 @@ Once completed, you now have a GitHub account and can start creating repositorie
 
 ---
 
-# Creating Your First Repository
+## Creating Your First Repository
 
 A repository (repo) is where your project files and version history are stored. Follow these steps to create your first repository on GitHub:
 
