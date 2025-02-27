@@ -6,6 +6,7 @@
   - [How to Install Linux](./ch1.1-linux-installation.md)
   - [Using the Linux Terminal](./ch1.2-linux-terminal.md)
     - [Origin of the Linux Terminal](./ch1.2.2-terminal-origins.md)
+  - [How to Use SSH Through VS Code](./ch1.4-ssh-vscode.md)
   - [How to Submit Assignments using SSH](./ch1.3-ssh-turnin.md)
     - [How to Submit Assignments using Mobaxterm on Windows](./ch1.3.1-mobaxterm.md)
     - [How to Submit Assignments using PuTTY on Windows](./ch1.3.2-putty.md)
