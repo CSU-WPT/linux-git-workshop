@@ -124,3 +124,11 @@ hint: preference for all repositories. You can also pass --rebase, --no-rebase,
 hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
 ```
+
+### VS Code Git Integration
+
+Visual Studio Code has integrated source control management (SCM) and includes Git support out-of-the-box. Here are a few good resources to reference on how to use it:
+
+- https://code.visualstudio.com/docs/sourcecontrol/overview
+
+- https://www.gitkraken.com/blog/vs-code-git
