@@ -121,7 +121,7 @@ Successful connection should say:
 Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-# Cloning a Repository Locally
+## Cloning a Repository Locally
 
 To clone a repository locally, follow these steps:
 
