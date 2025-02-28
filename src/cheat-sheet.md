@@ -116,7 +116,7 @@ Creates new file and writes the output of the command as lines of text to the ne
 
 For example, `ls > ls.txt` wites the contents of the current directory to a file named ls.txt which it puts in the current directory.
 
-`cat > catRedirect.txt` will then write any following lines you type into catRedirect.txt (since executing `cat` by itself repeats back at you whatever you type. That output becomes the input for thr file. Press ctrl+c to exit out of the running `cat` command.
+`cat > catRedirect.txt` will write any following lines you type into catRedirect.txt (since executing `cat` by itself repeats back at you whatever you type). That output becomes the input for thr file. Press ctrl+c to exit out of the running `cat` command.
 
 ### Pipes |
 
