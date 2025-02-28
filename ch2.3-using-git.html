@@ -167,29 +167,126 @@
 cd my_repo
 git init
 </code></pre>
-<h3 id="staging"><a class="header" href="#staging">Staging</a></h3>
-<p>Once we made some changes we will want to commit them, before we can do that we want to stage the files. This is like another layer to saving your files. This is so if you have two files you changed but only one is ready to commit, you can select the file to stage.</p>
-<p>To stage your file run this command:</p>
-<p><code>git add file_name/folder_name</code></p>
-<p>TIP:</p>
-<p>use this command to see the changes made.</p>
-<p><code>git status</code></p>
-<h3 id="committing"><a class="header" href="#committing">Committing</a></h3>
-<p>Creating a commit creates a snapshot of all the staged files</p>
-<p>TIP: For commit messages do you not use past tense, such as "I made headings blue". Use language like "Make headings blue", as if you are giving orders to the codebase.</p>
-<p>This command creates a commit:</p>
-<p><code>git commit -m "description of the commit"</code></p>
+<h2 id="creating-and-committing-files"><a class="header" href="#creating-and-committing-files">Creating and Committing Files</a></h2>
+<p>First, let's makes a file.</p>
+<pre><code class="language-bash">echo "hello world" &gt; hello.txt
+</code></pre>
+<p>We now have the <code>hello.txt</code> file containing "hello world." Because we have not yet committed this file, it is in the "untracked" state (underneath the "modified" / "working directory" state described in <a href="./ch2-git.html">Section 2</a>).</p>
+<p>You can check this by running git's <code>status</code> command.</p>
+<pre><code class="language-bash">$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+	hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+</code></pre>
+<p>You can also see this using the git panel in VS Code.</p>
+<p><img src="./images/vscode-git-untracked.png" alt="VS Code - Git - Untracked" /></p>
+<p>Before we commit this file, we need to add it to staging.</p>
+<pre><code class="language-bash">git add hello.txt
+</code></pre>
+<p>Alternatively, you can add all changes to staging using this command:</p>
+<pre><code class="language-bash">git add . # "." refers to the current directory
+</code></pre>
+<p>This process allows you to choose which files are included in each commit (instead of automatically adding all modified files to the current commit).</p>
+<p>Let's check git's status again.</p>
+<pre><code class="language-bash">$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+        new file:   hello.txt
+</code></pre>
+<p>Next, let's make our commit.</p>
+<pre><code class="language-bash">git commit -m "My first commit!" # -m specifies the commit message
+</code></pre>
+<blockquote>
+<p><strong>TIP:</strong> For commit messages do you not use past tense, such as "I made headings blue". Use language like "Make headings blue", as if you are giving orders to the codebase.</p>
+</blockquote>
+<p>Here are a few other commit examples.</p>
 <p><img src="./images/IMG_23DAA7999A27-1.jpeg" alt="Drawing-1" /></p>
-<p>A good way of visualizing how this works</p>
+<p>The commits of a project (including multiple branches) can be organized into a "commit tree", which looks something like this:</p>
 <p><img src="./images/IMG_96E3138F72ED-1.jpeg" alt="Drawing-2" /></p>
-<h3 id="branches"><a class="header" href="#branches">Branches</a></h3>
+<h2 id="branches"><a class="header" href="#branches">Branches</a></h2>
 <p>Branches allow you to work on different versions of your project simultaneously without affecting the main codebase</p>
 <p>From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.</p>
-<p>Use this command to create a new branch:</p>
-<p><code>git checkout -b &lt;name_of_the_branch&gt;</code></p>
-<p>To switch branches</p>
-<p><code>git checkout &lt;name_of_the_branch&gt;</code></p>
 <p><img src="./images/IMG_36D4CB635079-1.jpeg" alt="Drawing-0" /></p>
+<h3 id="creating-a-branch"><a class="header" href="#creating-a-branch">Creating a Branch</a></h3>
+<p>Let's create a new branch using this command:</p>
+<p><code>git checkout -b darshan/feature-a</code></p>
+<p>You should now be on the <code>darshan/feature-a</code> branch. You can check this by running the <code>git branch</code> command.</p>
+<p>Next, let's add a change to this branch</p>
+<pre><code class="language-bash">echo "foo bar" &gt; foo.txt
+git add .
+git commit -m "Add foo.txt"
+</code></pre>
+<p>Let's go back to the <code>main</code> branch.</p>
+<pre><code class="language-bash">git checkout main
+</code></pre>
+<p>Note that the <code>foo.txt</code> file is no longer present.</p>
+<pre><code class="language-bash">$ ls
+hello.txt
+</code></pre>
+<h3 id="merging-branches"><a class="header" href="#merging-branches">Merging Branches</a></h3>
+<p>To update the <code>main</code> branch with the changes from <code>darshan/feature-a</code>, run this command.</p>
+<pre><code class="language-bash">$ git merge darshan/feature-a
+Updating f365571..0d24068
+Fast-forward
+ foo.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 foo.txt
+</code></pre>
+<p>If the files modified in <code>main</code> and <code>darshan/feature-a</code> (after <code>darshan/feature-a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.</p>
+<p>First, we'll make a change on the <code>main</code> branch.</p>
+<pre><code class="language-bash">echo "Hello CSU" &gt;&gt; hello.txt # &gt;&gt; appends to an existing file
+git add .
+git commit -m "Update hello.txt"
+</code></pre>
+<p>Next, let's make a change on the <code>darshan/feature-a</code> branch without updating (merging) the new changes on <code>main</code>.</p>
+<pre><code class="language-bash">echo "Hello engineering students!" &gt;&gt; hello.txt
+git add .
+git commit -m "Update hello.txt 2"
+</code></pre>
+<p>Now let's try to merge this.</p>
+<pre><code class="language-bash">$ git checkout main
+$ git merge darshan/feature-a
+Auto-merging hello.txt
+CONFLICT (content): Merge conflict in hello.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+<p>Before you do anything else, you will need to fix the merge conflicts. Git represents these conflicts within each file using the following format</p>
+<pre><code class="language-ini"># hello.txt
+hello world
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Hello CSU
+=======
+Hello engineering students!
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; darshan/feature-a
+</code></pre>
+<p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
+<p>For example, edit <code>hello.txt</code> like this:</p>
+<pre><code class="language-ini"># hello.txt
+hello world
+Hello CSU
+Hello engineering students
+</code></pre>
+<p>Then run these commands:</p>
+<pre><code class="language-bash">git add .
+git commit -m "Merge feature-a into main"
+</code></pre>
+<p><strong>Note:</strong> you can also use <code>git commit</code> without a commit message. It will then open an editor for you the write the commit message. once you save the message and exit the editor, git will make the commit.</p>
+<p>Afterwards, you may delete <code>darshan/feature-a</code>.</p>
+<pre><code class="language-bash">git branch -d darshan/feature-a
+</code></pre>
+<h2 id="remotes"><a class="header" href="#remotes">Remotes</a></h2>
+<p>First, make sure that you've created your repo through GitHub (see <a href="./ch2.2-create-github-account.html">Section 2.2</a>). Alternatively, you can create another GitHub repo (with no files) and then add it as a remote to your current repo.</p>
+<p>More coming soon...</p>
 <h3 id="merging-branches-and-pull-requests"><a class="header" href="#merging-branches-and-pull-requests">Merging branches and Pull Requests</a></h3>
 <p>This is how you create a Pull Request for your branch on GitHub:</p>
 <ul>
@@ -200,28 +297,6 @@ git init
 <li>Type a title and description for your pull request.</li>
 <li>To create a pull request that is ready for review, click Create Pull Request.</li>
 </ul>
-<p>After you're done reviewing the code, you can then merge the two branches together.</p>
-<p>To bring the latest changes in <code>branch_a</code> into <code>main</code>, we would first switch to the main branch...</p>
-<pre><code class="language-bash">git checkout main
-</code></pre>
-<p>and then run the <code>git merge</code> command.</p>
-<pre><code class="language-bash">git merge branch_a
-</code></pre>
-<p>If the files modified in <code>main</code> and <code>branch_a</code> (after <code>branch_a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will probably encounter this:</p>
-<pre><code>CONFLICT (content): Merge conflict in my_file.txt
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre>
-<p>Before you do anything else, you will need to fix the merge conflicts. Git represents these conflicts within each file using the following template (or something similar, if you've modified the default settings):</p>
-<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Change in the main branch
-=======
-Change in branch_a
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch_a
-</code></pre>
-<p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
-<p>Afterwards, you may delete <code>branch_a</code>.</p>
-<pre><code class="language-bash">git branch -d branch_a
-</code></pre>
 <h4 id="troubleshooting-merging-with-remote-branches"><a class="header" href="#troubleshooting-merging-with-remote-branches">Troubleshooting: Merging with remote branches</a></h4>
 <pre><code>From github.com:gaverkov/mixed_volumes_proposal
  * branch            main       -&gt; FETCH_HEA
