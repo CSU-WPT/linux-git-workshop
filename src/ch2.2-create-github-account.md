@@ -45,29 +45,6 @@ A repository (repo) is where your project files and version history are stored. 
 
 Your repository is now ready! You can start adding files, cloning it to your local machine, or collaborating with others.
 
-## Cloning a Repository Locally
-
-To clone a repository locally, follow these steps:
-
-1. First, navigate to the directory where you want to clone the repository:
-   ```bash
-   cd /path/to/your/directory
-   ```
-2. Get the repository URL:
-   - Go to the GitHub repository page.
-   - Click on the Code button.
-   - Under Clone, copy the URL.
-     > &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/90c30692-d88a-4d0b-a31c-36df8c8bd9a2" width="300">
-3. Clone the repository by using the git clone command followed by the copied repository URL:
-   ```bash
-   git clone https://github.com/username/repository-name.git
-   ```
-4. This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
-   ```bash
-   cd repository-name
-   You can now work with the repository locally.
-   ```
-
 # Connect GitHub Account with your Local git with SSH Keys
 
 ## Start the SSH Agent Service
@@ -143,3 +120,26 @@ Successful connection should say:
 ```
 Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.
 ```
+
+## Cloning a Repository Locally
+
+To clone a repository locally, follow these steps:
+
+1. First, navigate to the directory where you want to clone the repository:
+   ```bash
+   cd /path/to/your/directory
+   ```
+2. Get the repository URL:
+   - Go to the GitHub repository page.
+   - Click on the Code button.
+   - Under Clone, click on the SSH Tab, and copy the URL.
+     > &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/copy-ssh-link.png" width="300">
+3. Clone the repository by using the git clone command followed by the copied repository URL:
+   ```bash
+   git clone https://github.com/username/repository-name.git
+   ```
+4. This will create a new folder with the repository name and download all files into it. You can then navigate into the cloned repository:
+   ```bash
+   cd repository-name
+   You can now work with the repository locally.
+   ```

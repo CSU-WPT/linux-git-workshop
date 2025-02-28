@@ -1,8 +1,8 @@
 # Using git
 
-## Creating a repository locally
+### Creating a repository locally (Optional)
 
-Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in [Section 2.2](./ch2.2-create-github-account.md)) or by creating one locally using the following commands:
+If you were not able to create a GitHub repository and clone it locally (described in [Section 2.2](./ch2.2-create-github-account.md)), before you proceed, you will need to create a local git repository. You can do that by using the following commands:
 
 ```bash
 mkdir my_repo
@@ -86,6 +86,9 @@ Branches allow you to work on different versions of your project simultaneously 
 From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.
 
 ![Drawing-0](./images/IMG_36D4CB635079-1.jpeg)
+
+
+### Creating a Branch
 
 Let's create a new branch using this command:
 
@@ -197,6 +200,17 @@ First, make sure that you've created your repo through GitHub (see [Section 2.2]
 
 More coming soon...
 
+### Merging branches and Pull Requests
+
+This is how you create a Pull Request for your branch on GitHub:
+
+- On GitHub, navigate to the main page of the repository.
+- In the "Branch" menu, choose the branch that contains your commits. ![Switch-Branch](https://docs.github.com/assets/cb-29825/mw-1440/images/help/pull_requests/branch-dropdown.webp)
+- Above the list of files, in the yellow banner, click Compare & pull request to create a pull request for the associated branch.
+- Use the base branch dropdown menu to select the branch you'd like to merge your changes into, then use the compare branch drop-down menu to choose the topic branch you made your changes in.
+- Type a title and description for your pull request.
+- To create a pull request that is ready for review, click Create Pull Request.
+
 #### Troubleshooting: Merging with remote branches
 
 ```
@@ -215,3 +229,11 @@ hint: preference for all repositories. You can also pass --rebase, --no-rebase,
 hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
 ```
+
+### VS Code Git Integration
+
+Visual Studio Code has integrated source control management (SCM) and includes Git support out-of-the-box. Here are a few good resources to reference on how to use it:
+
+- https://code.visualstudio.com/docs/sourcecontrol/overview
+
+- https://www.gitkraken.com/blog/vs-code-git
