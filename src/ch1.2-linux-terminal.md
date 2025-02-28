@@ -341,9 +341,9 @@ Modern computers and phones have advanced capabilities, yet text remains crucial
    ```bash
    cat combined.txt | uniq | wc -l
    ```
-   If few duplicates are removed, it’s likely because `uniq` only removes adjacent duplicates.
+   This will not remove all duplicates, because `uniq` only removes adjacent duplicates.
 1. **Sort Before Uniquing**:
-   To prepare for using `uniq`, sort the file first:
+   To prepare for using `uniq`, sort the file first, which will put all duplicates next to each other:
    ```bash
    sort combined.txt | uniq | wc -l
    ```
