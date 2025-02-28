@@ -312,7 +312,7 @@ cat combined.txt
 <p>To view long files one page at a time, use <code>less</code>:</p>
 <pre><code class="language-bash">less combined.txt
 </code></pre>
-<p>You can navigate using arrow keys and exit with <code>q</code>. This basic workflow helps in creating and managing files with content efficiently.</p>
+<p>You can navigate each line using arrow keys, or <code>b</code> and <code>spacebar</code> to go up down entire pages, and exit with <code>q</code>. This basic workflow helps in creating and managing files with content efficiently.</p>
 <h2 id="vim--nano"><a class="header" href="#vim--nano">Vim &amp; Nano</a></h2>
 <p>These tools are complex enough to deserve entire pages of their own, but just to get your toes wet, if you'd like to properly edit files in the terminal, you can do so using the <code>nano</code> or <code>vim</code> commands. These commands will start the nano or vim programs, and you will not be able to use normal linux commands. Don't panic!</p>
 <pre><code class="language-bash">nano combined.txt
@@ -423,24 +423,19 @@ Be especially cautious when using <code>rm -r</code>, as it will delete everythi
 <ol>
 <li><strong>Count Files in a Directory</strong>:
 To count the number of lines in an output without creating a temporary file (which is required for <code>&gt;</code> redirection), use:
-<pre><code class="language-bash">ls ~ | wc -l
+<pre><code class="language-bash">ls | wc -l
 </code></pre>
-</li>
+So here, <code>ls</code> returns a list of all the files in your current directory, and then sends that list to <code>wc -l</code>, which counts the lines of text, which will be the number of items in your directory.</li>
 <li><strong>View Large Outputs</strong>:
 For lengthy outputs, use <code>less</code>:
-<pre><code class="language-bash">ls /etc | less
+<pre><code class="language-bash">ls | less
 </code></pre>
-</li>
+Again, output of <code>ls</code> goes to <code>less</code></li>
 <li><strong>Find Unique Lines</strong>:
 To count unique lines in <code>combined.txt</code>, chain commands:
 <pre><code class="language-bash">cat combined.txt | uniq | wc -l
 </code></pre>
 If few duplicates are removed, it’s likely because <code>uniq</code> only removes adjacent duplicates.</li>
-<li><strong>Check Command Documentation</strong>:
-Use the <code>man</code> command for details on how commands work:
-<pre><code class="language-bash">man uniq
-</code></pre>
-</li>
 <li><strong>Sort Before Uniquing</strong>:
 To prepare for using <code>uniq</code>, sort the file first:
 <pre><code class="language-bash">sort combined.txt | uniq | wc -l
@@ -449,6 +444,11 @@ To prepare for using <code>uniq</code>, sort the file first:
 <li><strong>Searching for a string in an input</strong>:
 To search for a string in a file, use <code>grep</code>:
 <pre><code class="language-bash">cat combined.txt | grep "string"
+</code></pre>
+</li>
+<li><strong>Check Command Documentation</strong>:
+Use the <code>man</code> command for the manual, or the full details on how commands work:
+<pre><code class="language-bash">man uniq
 </code></pre>
 </li>
 </ol>
