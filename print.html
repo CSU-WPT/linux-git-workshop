@@ -585,9 +585,9 @@ Again, output of <code>ls</code> goes to <code>less</code></li>
 To count unique lines in <code>combined.txt</code>, chain commands:
 <pre><code class="language-bash">cat combined.txt | uniq | wc -l
 </code></pre>
-If few duplicates are removed, it’s likely because <code>uniq</code> only removes adjacent duplicates.</li>
+This will not remove all duplicates, because <code>uniq</code> only removes adjacent duplicates.</li>
 <li><strong>Sort Before Uniquing</strong>:
-To prepare for using <code>uniq</code>, sort the file first:
+To prepare for using <code>uniq</code>, sort the file first, which will put all duplicates next to each other:
 <pre><code class="language-bash">sort combined.txt | uniq | wc -l
 </code></pre>
 </li>
