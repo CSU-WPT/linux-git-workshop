@@ -1,6 +1,6 @@
 # Using git
 
-### Creating a repository locally
+## Creating a repository locally
 
 Before you proceed, you will need to create a git repository. You can do that by creating a repository on GitHub and cloning (described in [Section 2.2](./ch2.2-create-github-account.md)) or by creating one locally using the following commands:
 
@@ -10,90 +10,192 @@ cd my_repo
 git init
 ```
 
-### Staging
+## Creating and Committing Files
 
-Once we made some changes we will want to commit them, before we can do that we want to stage the files. This is like another layer to saving your files. This is so if you have two files you changed but only one is ready to commit, you can select the file to stage.
+First, let's makes a file.
 
-To stage your file run this command:
+```bash
+echo "hello world" > hello.txt
+```
 
-`git add file_name/folder_name`
+We now have the `hello.txt` file containing "hello world." Because we have not yet committed this file, it is in the "untracked" state (underneath the "modified" / "working directory" state described in [Section 2](./ch2-git.md)).
 
-TIP:
+You can check this by running git's `status` command.
 
-use this command to see the changes made.
+```bash
+$ git status
+On branch main
 
-`git status`
+No commits yet
 
-### Committing
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	hello.txt
 
-Creating a commit creates a snapshot of all the staged files
+nothing added to commit but untracked files present (use "git add" to track)
+```
+You can also see this using the git panel in VS Code.
 
-TIP: For commit messages do you not use past tense, such as "I made headings blue". Use language like "Make headings blue", as if you are giving orders to the codebase.
+![VS Code - Git - Untracked](./images/vscode-git-untracked.png)
 
-This command creates a commit:
+Before we commit this file, we need to add it to staging.
 
-`git commit -m "description of the commit"`
+```bash
+git add hello.txt
+```
+
+Alternatively, you can add all changes to staging using this command:
+```bash
+git add . # "." refers to the current directory
+```
+
+This process allows you to choose which files are included in each commit (instead of automatically adding all modified files to the current commit).
+
+Let's check git's status again.
+```bash
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   hello.txt
+```
+
+Next, let's make our commit.
+
+```bash
+git commit -m "My first commit!" # -m specifies the commit message
+```
+
+> **TIP:** For commit messages do you not use past tense, such as "I made headings blue". Use language like "Make headings blue", as if you are giving orders to the codebase.
+
+Here are a few other commit examples.
 
 ![Drawing-1](./images/IMG_23DAA7999A27-1.jpeg)
 
-A good way of visualizing how this works
+The commits of a project (including multiple branches) can be organized into a "commit tree", which looks something like this:
 
 ![Drawing-2](./images/IMG_96E3138F72ED-1.jpeg)
 
-### Branches
+## Branches
 
 Branches allow you to work on different versions of your project simultaneously without affecting the main codebase
 
 From this main code you can create branches, this allows you to make changes without the chance of ruining the main code. Think of it as a copy of your code that you can now change with zero risks.
 
-Use this command to create a new branch:
-
-`git checkout -b <name_of_the_branch>`
-
-To switch branches
-
-`git checkout <name_of_the_branch>`
-
 ![Drawing-0](./images/IMG_36D4CB635079-1.jpeg)
 
-### Merging branches
+Let's create a new branch using this command:
 
-To bring the latest changes in `branch_a` into `main`, we would first switch to the main branch...
+`git checkout -b darshan/feature-a`
+
+You should now be on the `darshan/feature-a` branch. You can check this by running the `git branch` command.
+
+Next, let's add a change to this branch
+
+```bash
+echo "foo bar" > foo.txt
+git add .
+git commit -m "Add foo.txt"
+```
+
+Let's go back to the `main` branch.
 
 ```bash
 git checkout main
 ```
 
-and then run the `git merge` command.
+Note that the `foo.txt` file is no longer present.
+```bash
+$ ls
+hello.txt
+```
+
+### Merging Branches
+
+To update the `main` branch with the changes from `darshan/feature-a`, run this command.
 
 ```bash
-git merge branch_a
+$ git merge darshan/feature-a
+Updating f365571..0d24068
+Fast-forward
+ foo.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 foo.txt
 ```
 
-If the files modified in `main` and `branch_a` (after `branch_a` was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will probably encounter this:
+If the files modified in `main` and `darshan/feature-a` (after `darshan/feature-a` was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.
 
+First, we'll make a change on the `main` branch.
+
+```bash
+echo "Hello CSU" >> hello.txt # >> appends to an existing file
+git add .
+git commit -m "Update hello.txt"
 ```
-CONFLICT (content): Merge conflict in my_file.txt
+
+Next, let's make a change on the `darshan/feature-a` branch without updating (merging) the new changes on `main`.
+
+```bash
+echo "Hello engineering students!" >> hello.txt
+git add .
+git commit -m "Update hello.txt 2"
+```
+
+Now let's try to merge this.
+
+```bash
+$ git checkout main
+$ git merge darshan/feature-a
+Auto-merging hello.txt
+CONFLICT (content): Merge conflict in hello.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-Before you do anything else, you will need to fix the merge conflicts. Git represents these conflicts within each file using the following template (or something similar, if you've modified the default settings):
+Before you do anything else, you will need to fix the merge conflicts. Git represents these conflicts within each file using the following format
 
-```
+```ini
+# hello.txt
+hello world
 <<<<<<< HEAD
-Change in the main branch
+Hello CSU
 =======
-Change in branch_a
->>>>>>> branch_a
+Hello engineering students!
+>>>>>>> darshan/feature-a
 ```
 
 To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.
 
-Afterwards, you may delete `branch_a`.
+For example, edit `hello.txt` like this:
+
+```ini
+# hello.txt
+hello world
+Hello CSU
+Hello engineering students
+```
+
+Then run these commands:
+```bash
+git add .
+git commit -m "Merge feature-a into main"
+```
+
+**Note:** you can also use `git commit` without a commit message. It will then open an editor for you the write the commit message. once you save the message and exit the editor, git will make the commit. 
+
+Afterwards, you may delete `darshan/feature-a`.
 
 ```bash
-git branch -d branch_a
+git branch -d darshan/feature-a
 ```
+
+## Remotes
+
+First, make sure that you've created your repo through GitHub (see [Section 2.2](./ch2.2-create-github-account.md)). Alternatively, you can create another GitHub repo (with no files) and then add it as a remote to your current repo. 
+
+More coming soon...
 
 #### Troubleshooting: Merging with remote branches
 
