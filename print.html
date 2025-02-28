@@ -1119,6 +1119,18 @@ hint: invocation.
 <p>Copies a file to another file or directory.</p>
 <p>If copying to a file, it will overwrite the existing file.</p>
 <p>If copying to a directory, it keeps the original name.</p>
+<h3 id="redirection"><a class="header" href="#redirection">Redirection &gt;</a></h3>
+<p><code>[command] &gt; filename.txt</code>
+Creates new file and writes the output of the command as lines of text to the new file.</p>
+<p>For example:
+<code>ls &gt; ls.txt</code>
+Writes the contents of the current directory to a file named ls.txt which it puts in the current directory.</p>
+<p><code>cat &gt; catRedirect.txt</code>
+Will then write any following lines you type into catRedirect.txt (since executing <code>cat</code> by itself repeats back at you whatever you type. That output becomes the input for thr file. Press ctrl+c to exit out of the running <code>cat</code> command.</p>
+<h3 id="pipes-"><a class="header" href="#pipes-">Pipes |</a></h3>
+<p><code>[command] | [command]</code>
+The output of the first command becomes the input of the first command.</p>
+<p>These can be chained together, so output of one command becomes the input of anouther, whose output goes to another command, so you can execute mutiple operations one file or directory in succession, each building on the next.</p>
 <h3 id="assignment-submission"><a class="header" href="#assignment-submission">Assignment Submission</a></h3>
 <h3 id="turn-in-assignments"><a class="header" href="#turn-in-assignments">Turn in Assignments</a></h3>
 <p><code>turnin -c [class] -p [assignment] [file]</code></p>
