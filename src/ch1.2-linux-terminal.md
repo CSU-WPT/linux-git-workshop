@@ -204,7 +204,7 @@ To view long files one page at a time, use `less`:
 less combined.txt
 ```
 
-You can navigate using arrow keys and exit with `q`. This basic workflow helps in creating and managing files with content efficiently.
+You can navigate each line using arrow keys, or `b` and `spacebar` to go up down entire pages, and exit with `q`. This basic workflow helps in creating and managing files with content efficiently.
 
 ## Vim & Nano
 These tools are complex enough to deserve entire pages of their own, but just to get your toes wet, if you'd like to properly edit files in the terminal, you can do so using the `nano` or `vim` commands. These commands will start the nano or vim programs, and you will not be able to use normal linux commands. Don't panic!
@@ -327,24 +327,21 @@ Modern computers and phones have advanced capabilities, yet text remains crucial
 1. **Count Files in a Directory**:
    To count the number of lines in an output without creating a temporary file (which is required for `>` redirection), use:
    ```bash
-   ls ~ | wc -l
+   ls | wc -l
    ```
+   So here, `ls` returns a list of all the files in your current directory, and then sends that list to `wc -l`, which counts the lines of text, which will be the number of items in your directory.
 1. **View Large Outputs**:
    For lengthy outputs, use `less`:
    ```bash
-   ls /etc | less
+   ls | less
    ```
+   Again, output of `ls` goes to `less`
 1. **Find Unique Lines**:
    To count unique lines in `combined.txt`, chain commands:
    ```bash
    cat combined.txt | uniq | wc -l
    ```
    If few duplicates are removed, it’s likely because `uniq` only removes adjacent duplicates.
-1. **Check Command Documentation**:
-   Use the `man` command for details on how commands work:
-   ```bash
-   man uniq
-   ```
 1. **Sort Before Uniquing**:
    To prepare for using `uniq`, sort the file first:
    ```bash
@@ -355,3 +352,9 @@ Modern computers and phones have advanced capabilities, yet text remains crucial
    ```bash
    cat combined.txt | grep "string"
    ```
+1. **Check Command Documentation**:
+   Use the `man` command for the manual, or the full details on how commands work:
+   ```bash
+   man uniq
+   ```
+
