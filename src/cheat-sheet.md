@@ -108,6 +108,24 @@ If copying to a file, it will overwrite the existing file.
 
 If copying to a directory, it keeps the original name.
 
+### Redirection >
+
+`[command] > filename.txt`
+Creates new file and writes the output of the command as lines of text to the new file.
+
+For example:
+`ls > ls.txt`
+Writes the contents of the current directory to a file named ls.txt which it puts in the current directory.
+
+`cat > catRedirect.txt`
+Will then write any following lines you type into catRedirect.txt (since executing `cat` by itself repeats back at you whatever you type. That output becomes the input for thr file. Press ctrl+c to exit out of the running `cat` command.
+
+### Pipes |
+`[command] | [command]`
+The output of the first command becomes the input of the first command.
+
+These can be chained together, so output of one command becomes the input of anouther, whose output goes to another command, so you can execute mutiple operations one file or directory in succession, each building on the next.
+
 ### Assignment Submission
 
 ### Turn in Assignments
