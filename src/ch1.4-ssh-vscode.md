@@ -1,4 +1,4 @@
-# Editing your files on Grail through VS Code
+# Editing your files on Grail through Microsoft Visual Studio Code
 
 You can edit files that are on the CSU Linux computers directly through VS Code, instead of editing locally and then using `scp` each time you want to upload them.
 
