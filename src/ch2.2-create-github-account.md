@@ -102,9 +102,11 @@ ssh-add ~/.ssh/id_ed25519
 
 Print the public key content to the terminal and copy it:
 
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
+Linux:
+`cat ~/.ssh/id_ed25519.pub`
+
+Windows:
+`type ~/.ssh/id_ed25519.pub`
 
 ## Add the Public Key to your GitHub Account
 
