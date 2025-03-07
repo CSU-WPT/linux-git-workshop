@@ -57,6 +57,16 @@ In Powershell, start the ssh service:
 Start-Service ssh-agent
 ```
 
+If that does not work, open Powershell as Administrtor and run:
+
+```Powershell
+Get-Service ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+Get-Service ssh-agent
+```
+
+After successful execution, it should say the service is running.
+
 Linux
 
 In the terminal, check if the ssh service is running:
