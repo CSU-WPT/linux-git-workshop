@@ -92,9 +92,9 @@ From this main code you can create branches, this allows you to make changes wit
 
 Let's create a new branch using this command:
 
-`git checkout -b darshan/feature-a`
+`git checkout -b user/feature-a`
 
-You should now be on the `darshan/feature-a` branch. You can check this by running the `git branch` command.
+You should now be on the `user/feature-a` branch. You can check this by running the `git branch` command.
 
 Next, let's add a change to this branch
 
@@ -118,10 +118,10 @@ hello.txt
 
 ### Merging Branches
 
-To update the `main` branch with the changes from `darshan/feature-a`, run this command.
+To update the `main` branch with the changes from `user/feature-a`, run this command.
 
 ```bash
-$ git merge darshan/feature-a
+$ git merge user/feature-a
 Updating f365571..0d24068
 Fast-forward
  foo.txt | 1 +
@@ -129,7 +129,7 @@ Fast-forward
  create mode 100644 foo.txt
 ```
 
-If the files modified in `main` and `darshan/feature-a` (after `darshan/feature-a` was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.
+If the files modified in `main` and `user/feature-a` (after `user/feature-a` was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.
 
 First, we'll make a change on the `main` branch.
 
@@ -139,7 +139,7 @@ git add .
 git commit -m "Update hello.txt"
 ```
 
-Next, let's make a change on the `darshan/feature-a` branch without updating (merging) the new changes on `main`.
+Next, let's make a change on the `user/feature-a` branch without updating (merging) the new changes on `main`.
 
 ```bash
 echo "Hello engineering students!" >> hello.txt
@@ -151,7 +151,7 @@ Now let's try to merge this.
 
 ```bash
 $ git checkout main
-$ git merge darshan/feature-a
+$ git merge user/feature-a
 Auto-merging hello.txt
 CONFLICT (content): Merge conflict in hello.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -166,7 +166,7 @@ hello world
 Hello CSU
 =======
 Hello engineering students!
->>>>>>> darshan/feature-a
+>>>>>>> user/feature-a
 ```
 
 To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.
@@ -188,10 +188,10 @@ git commit -m "Merge feature-a into main"
 
 **Note:** you can also use `git commit` without a commit message. It will then open an editor for you the write the commit message. once you save the message and exit the editor, git will make the commit. 
 
-Afterwards, you may delete `darshan/feature-a`.
+Afterwards, you may delete `user/feature-a`.
 
 ```bash
-git branch -d darshan/feature-a
+git branch -d user/feature-a
 ```
 
 ## Remotes
@@ -237,3 +237,21 @@ Visual Studio Code has integrated source control management (SCM) and includes G
 - https://code.visualstudio.com/docs/sourcecontrol/overview
 
 - https://www.gitkraken.com/blog/vs-code-git
+
+### Git Best Practices
+
+- Commit Often: Make small, frequent commits to capture your progress.
+
+- Write Clear Commit Messages: Use descriptive messages that explain why a change was made, not just what changed.
+
+- Use Branches: Create branches for features, fixes, and experiments to keep your main branch stable.
+
+- Pull Before You Push: Always `git pull` before pushing.
+
+- Review Changes Before Committing: Use `git status` and `git diff` to review your changes before you commit.
+
+- Keep Repositories Small: Avoid adding large files or unnecessary dependencies.
+
+- Use .gitignore: Exclude files that shouldn't be tracked (like build artifacts, log files, or secrets) by adding them to a `.gitignore` file.
+
+https://www.w3schools.com/git/git_best_practices.asp
