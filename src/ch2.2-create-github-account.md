@@ -112,7 +112,7 @@ Linux:
 `cat ~/.ssh/id_ed25519.pub`
 
 Windows:
-`type ~/.ssh/id_ed25519.pub`
+`type "$env:USERPROFILE\.ssh\id_ed25519.pub"`
 
 ## Add the Public Key to your GitHub Account
 
