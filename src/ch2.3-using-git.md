@@ -237,3 +237,21 @@ Visual Studio Code has integrated source control management (SCM) and includes G
 - https://code.visualstudio.com/docs/sourcecontrol/overview
 
 - https://www.gitkraken.com/blog/vs-code-git
+
+### Git Best Practices
+
+- Commit Often: Make small, frequent commits to capture your progress.
+
+- Write Clear Commit Messages: Use descriptive messages that explain why a change was made, not just what changed.
+
+- Use Branches: Create branches for features, fixes, and experiments to keep your main branch stable.
+
+- Pull Before You Push: Always `git pull` before pushing.
+
+- Review Changes Before Committing: Use `git status` and `git diff` to review your changes before you commit.
+
+- Keep Repositories Small: Avoid adding large files or unnecessary dependencies.
+
+- Use .gitignore: Exclude files that shouldn't be tracked (like build artifacts, log files, or secrets) by adding them to a `.gitignore` file.
+
+https://www.w3schools.com/git/git_best_practices.asp
