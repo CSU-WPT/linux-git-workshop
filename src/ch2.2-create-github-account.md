@@ -49,7 +49,7 @@ Your repository is now ready! You can start adding files, cloning it to your loc
 
 ## Start the SSH Agent Service
 
-Windows
+#### Windows
 
 In Powershell, start the ssh service:
 
@@ -57,7 +57,7 @@ In Powershell, start the ssh service:
 Start-Service ssh-agent
 ```
 
-If that does not work, open Powershell as Administrtor and run:
+If that does not work, open **Powershell as Administator** and run:
 
 ```Powershell
 Get-Service ssh-agent | Set-Service -StartupType Manual
@@ -67,7 +67,7 @@ Get-Service ssh-agent
 
 After successful execution, it should say the service is running.
 
-Linux
+#### Linux
 
 In the terminal, check if the ssh service is running:
 
@@ -94,8 +94,14 @@ This creates a pair of keys:
 
 Run this command to add the private SSH Key to SSH Agent:
 
+#### Linux
 ```bash
 ssh-add ~/.ssh/id_ed25519
+```
+
+#### Windows
+```Powershell
+ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
 ```
 
 ## Get the Public Key Content
