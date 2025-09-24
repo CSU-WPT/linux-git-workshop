@@ -32,28 +32,41 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -67,7 +80,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -80,17 +94,20 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -117,13 +134,14 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -140,7 +158,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -234,11 +257,17 @@
 <p>Your repository is now ready! You can start adding files, cloning it to your local machine, or collaborating with others.</p>
 <h1 id="connect-github-account-with-your-local-git-with-ssh-keys"><a class="header" href="#connect-github-account-with-your-local-git-with-ssh-keys">Connect GitHub Account with your Local git with SSH Keys</a></h1>
 <h2 id="start-the-ssh-agent-service"><a class="header" href="#start-the-ssh-agent-service">Start the SSH Agent Service</a></h2>
-<p>Windows</p>
+<h4 id="windows"><a class="header" href="#windows">Windows</a></h4>
 <p>In Powershell, start the ssh service:</p>
 <pre><code class="language-Powershell">Start-Service ssh-agent
 </code></pre>
-<p>Linux</p>
+<p>If that does not work, open <strong>Powershell as Administator</strong> and run:</p>
+<pre><code class="language-Powershell">Get-Service ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+Get-Service ssh-agent
+</code></pre>
+<p>After successful execution, it should say the service is running.</p>
+<h4 id="linux"><a class="header" href="#linux">Linux</a></h4>
 <p>In the terminal, check if the ssh service is running:</p>
 <pre><code class="language-bash">eval "$(ssh-agent -s)"
 </code></pre>
@@ -254,12 +283,18 @@
 </ul>
 <h2 id="add-private-key-to-ssh-agent"><a class="header" href="#add-private-key-to-ssh-agent">Add Private Key to SSH Agent</a></h2>
 <p>Run this command to add the private SSH Key to SSH Agent:</p>
+<h4 id="linux-1"><a class="header" href="#linux-1">Linux</a></h4>
 <pre><code class="language-bash">ssh-add ~/.ssh/id_ed25519
+</code></pre>
+<h4 id="windows-1"><a class="header" href="#windows-1">Windows</a></h4>
+<pre><code class="language-Powershell">ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
 </code></pre>
 <h2 id="get-the-public-key-content"><a class="header" href="#get-the-public-key-content">Get the Public Key Content</a></h2>
 <p>Print the public key content to the terminal and copy it:</p>
-<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
-</code></pre>
+<p>Linux:
+<code>cat ~/.ssh/id_ed25519.pub</code></p>
+<p>Windows:
+<code>type ~/.ssh/id_ed25519.pub</code></p>
 <h2 id="add-the-public-key-to-your-github-account"><a class="header" href="#add-the-public-key-to-your-github-account">Add the Public Key to your GitHub Account</a></h2>
 <ul>
 <li>In the upper-right corner of any page on GitHub, click your profile photo, then click Settings.</li>
@@ -353,6 +388,7 @@ You can now work with the repository locally.
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>

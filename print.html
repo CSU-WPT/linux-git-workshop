@@ -33,28 +33,41 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -68,7 +81,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -81,17 +95,20 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -118,13 +135,14 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -141,7 +159,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -243,12 +266,13 @@
 <p>More info: <a href="https://en.wikipedia.org/wiki/Desktop_environment">https://en.wikipedia.org/wiki/Desktop_environment</a></p>
 <p>Most linux distributions meant for desktop use come with a pre-installed desktop environment. For example, Ubuntu comes with GNOME while Kubuntu, a spinoff of Ubuntu, comes with KDE. It is important to note basically any linux distribution can be used with any desktop environment. In fact, some distro websites (like <a href="https://fedoraproject.org/spins/">https://fedoraproject.org/spins/</a>) provide a download for each popular desktop environment. Arch is somewhat unique in that it doesn't come with a desktop environment at all. Instead, users will need to install one after installing the distro itself.</p>
 <h2 id="why-should-i-care-about-linux"><a class="header" href="#why-should-i-care-about-linux">Why should I care about Linux?</a></h2>
-<p>Because of Linux's quality and free licensing, it has become a popular choice for servers. In fact, "96.3% of the top one million web servers are running Linux" <sup class="footnote-reference"><a href="#1">1</a></sup>. That means that a strong majority developers need to develop products that run on Linux. Because of this and because Linux is free and flexible, many developers use Linux as their desktop operating system as well <sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
+<p>Because of Linux's quality and free licensing, it has become a popular choice for servers. In fact, "96.3% of the top one million web servers are running Linux" <sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>. That means that a strong majority developers need to develop products that run on Linux. Because of this and because Linux is free and flexible, many developers use Linux as their desktop operating system as well <sup class="footnote-reference" id="fr-1-2"><a href="#footnote-1">1</a></sup>.</p>
 <p>Since there is no escaping linux, we strongly encourage young developers to start learning it.</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p><a href="https://truelist.co/blog/linux-statistics/">https://truelist.co/blog/linux-statistics/</a></p>
-</div>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-install-linux"><a class="header" href="#how-to-install-linux">How to install Linux</a></h1>
+<hr>
+<ol class="footnote-definition"><li id="footnote-1">
+<p><a href="https://truelist.co/blog/linux-statistics/">https://truelist.co/blog/linux-statistics/</a> <a href="#fr-1-1">↩</a> <a href="#fr-1-2">↩2</a></p>
+</li>
+</ol><div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-install-linux"><a class="header" href="#how-to-install-linux">How to install Linux</a></h1>
 <p>Linux can be installed in a variety of ways, but it almost always starts with downloading the distribution's install ISO. Here are the links to a few common distros:</p>
 <ul>
 <li>Ubuntu: <a href="https://ubuntu.com/download/desktop">https://ubuntu.com/download/desktop</a></li>
@@ -760,7 +784,7 @@ ssh chopin12
 <p>In the “Enter command” box, type the turnin command that your instructor has told you to use. If you are unsure of this command, ask your instructor</p>
 <p>You should see a line in the terminal saying “Your files have been submitted to ‘class, homework’ for grading” indicating a successful turnin</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-git"><a class="header" href="#what-is-git">What is git?</a></h1>
-<p>Git is a distributed version control system (VCS) that helps developers track and manage changes in their code over time. With Git, every time you commit, or save the state of your project, Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots. <sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>Git is a distributed version control system (VCS) that helps developers track and manage changes in their code over time. With Git, every time you commit, or save the state of your project, Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots. <sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
 <p>This may seem innocuous, but it's actually vital to the development cycle. Virtually all professional code is managed by some VCS, and git is by far the most common.</p>
 <h1 id="terms-to-know"><a class="header" href="#terms-to-know">Terms to know</a></h1>
 <ul>
@@ -783,7 +807,7 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 <h2 id="use-cases"><a class="header" href="#use-cases">Use cases</a></h2>
 <h3 id="tracking-file-changes-over-time"><a class="header" href="#tracking-file-changes-over-time">Tracking file changes over time</a></h3>
 <p>Have you ever been scared to work on your code after completing a feature because you didn't break it? Git fixes this by allowing you to take a snapshot (or "commit") of your code, which you can always go back to by running a single command (<code>git checkout ...</code> or <code>git reset ...</code>).</p>
-<p>Making multiple commits (best practice is a commit for each feature) throughout the progression of a project allows you to revert at any time to any "milestone." You'll never lose your work again<sup class="footnote-reference"><a href="#2">2</a></sup>.</p>
+<p>Making multiple commits (best practice is a commit for each feature) throughout the progression of a project allows you to revert at any time to any "milestone." You'll never lose your work again<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup>.</p>
 <h3 id="working-on-different-versions-of-your-code-at-the-same-time"><a class="header" href="#working-on-different-versions-of-your-code-at-the-same-time">Working on different versions of your code at the same time</a></h3>
 <p>Git branches allow you to work on multiple versions of your code base at the same time. For example, if you want to maintain an old, released version (e.g. adding security patches) while continuing feature development for the latest version, you could create a branch called <code>v1.0.0</code> and a branch called <code>dev</code>.</p>
 <p>By default, git repositories have one branch named <code>master</code> or <code>main</code>. This is often used either for development or for the latest stable version of the software.</p>
@@ -793,13 +817,14 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 <p>Git can be used with platforms like <a href="https://github.com">GitHub</a> or <a href="https://gitlab.com">GitLab</a> to manage code stored in the cloud. This is an important part of the modern development cycle.</p>
 <p>Typically, a developer creates a branch, implements their feature (or reaches some stopping point), and then commits their changes. After they commit their changes, they <em>push</em> it up to the server hosting the main code base so that others can access it.</p>
 <p>For smaller projects, developers may skip the "creating a branch" step and commit new code directly to the <code>main</code> branch.</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F</p>
-</div>
-<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
-<p>Unless you delete or lose the git repository itself, or manually delete commits.</p>
-</div>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-install-git"><a class="header" href="#how-to-install-git">How to Install git</a></h1>
+<hr>
+<ol class="footnote-definition"><li id="footnote-1">
+<p>https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="footnote-2">
+<p>Unless you delete or lose the git repository itself, or manually delete commits. <a href="#fr-2-1">↩</a></p>
+</li>
+</ol><div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-install-git"><a class="header" href="#how-to-install-git">How to Install git</a></h1>
 <h2 id="windows"><a class="header" href="#windows">Windows</a></h2>
 <ol>
 <li>
@@ -914,11 +939,17 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 <p>Your repository is now ready! You can start adding files, cloning it to your local machine, or collaborating with others.</p>
 <h1 id="connect-github-account-with-your-local-git-with-ssh-keys"><a class="header" href="#connect-github-account-with-your-local-git-with-ssh-keys">Connect GitHub Account with your Local git with SSH Keys</a></h1>
 <h2 id="start-the-ssh-agent-service"><a class="header" href="#start-the-ssh-agent-service">Start the SSH Agent Service</a></h2>
-<p>Windows</p>
+<h4 id="windows-1"><a class="header" href="#windows-1">Windows</a></h4>
 <p>In Powershell, start the ssh service:</p>
 <pre><code class="language-Powershell">Start-Service ssh-agent
 </code></pre>
-<p>Linux</p>
+<p>If that does not work, open <strong>Powershell as Administator</strong> and run:</p>
+<pre><code class="language-Powershell">Get-Service ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+Get-Service ssh-agent
+</code></pre>
+<p>After successful execution, it should say the service is running.</p>
+<h4 id="linux-1"><a class="header" href="#linux-1">Linux</a></h4>
 <p>In the terminal, check if the ssh service is running:</p>
 <pre><code class="language-bash">eval "$(ssh-agent -s)"
 </code></pre>
@@ -934,12 +965,18 @@ https://git-scm.com/book/en/v2/Getting-Started-What-is-Git</li>
 </ul>
 <h2 id="add-private-key-to-ssh-agent"><a class="header" href="#add-private-key-to-ssh-agent">Add Private Key to SSH Agent</a></h2>
 <p>Run this command to add the private SSH Key to SSH Agent:</p>
+<h4 id="linux-2"><a class="header" href="#linux-2">Linux</a></h4>
 <pre><code class="language-bash">ssh-add ~/.ssh/id_ed25519
+</code></pre>
+<h4 id="windows-2"><a class="header" href="#windows-2">Windows</a></h4>
+<pre><code class="language-Powershell">ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
 </code></pre>
 <h2 id="get-the-public-key-content"><a class="header" href="#get-the-public-key-content">Get the Public Key Content</a></h2>
 <p>Print the public key content to the terminal and copy it:</p>
-<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
-</code></pre>
+<p>Linux:
+<code>cat ~/.ssh/id_ed25519.pub</code></p>
+<p>Windows:
+<code>type ~/.ssh/id_ed25519.pub</code></p>
 <h2 id="add-the-public-key-to-your-github-account"><a class="header" href="#add-the-public-key-to-your-github-account">Add the Public Key to your GitHub Account</a></h2>
 <ul>
 <li>In the upper-right corner of any page on GitHub, click your profile photo, then click Settings.</li>
@@ -1045,8 +1082,8 @@ Changes to be committed:
 <p><img src="./images/IMG_36D4CB635079-1.jpeg" alt="Drawing-0" /></p>
 <h3 id="creating-a-branch"><a class="header" href="#creating-a-branch">Creating a Branch</a></h3>
 <p>Let's create a new branch using this command:</p>
-<p><code>git checkout -b darshan/feature-a</code></p>
-<p>You should now be on the <code>darshan/feature-a</code> branch. You can check this by running the <code>git branch</code> command.</p>
+<p><code>git checkout -b user/feature-a</code></p>
+<p>You should now be on the <code>user/feature-a</code> branch. You can check this by running the <code>git branch</code> command.</p>
 <p>Next, let's add a change to this branch</p>
 <pre><code class="language-bash">echo "foo bar" &gt; foo.txt
 git add .
@@ -1060,28 +1097,28 @@ git commit -m "Add foo.txt"
 hello.txt
 </code></pre>
 <h3 id="merging-branches"><a class="header" href="#merging-branches">Merging Branches</a></h3>
-<p>To update the <code>main</code> branch with the changes from <code>darshan/feature-a</code>, run this command.</p>
-<pre><code class="language-bash">$ git merge darshan/feature-a
+<p>To update the <code>main</code> branch with the changes from <code>user/feature-a</code>, run this command.</p>
+<pre><code class="language-bash">$ git merge user/feature-a
 Updating f365571..0d24068
 Fast-forward
  foo.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 foo.txt
 </code></pre>
-<p>If the files modified in <code>main</code> and <code>darshan/feature-a</code> (after <code>darshan/feature-a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.</p>
+<p>If the files modified in <code>main</code> and <code>user/feature-a</code> (after <code>user/feature-a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.</p>
 <p>First, we'll make a change on the <code>main</code> branch.</p>
 <pre><code class="language-bash">echo "Hello CSU" &gt;&gt; hello.txt # &gt;&gt; appends to an existing file
 git add .
 git commit -m "Update hello.txt"
 </code></pre>
-<p>Next, let's make a change on the <code>darshan/feature-a</code> branch without updating (merging) the new changes on <code>main</code>.</p>
+<p>Next, let's make a change on the <code>user/feature-a</code> branch without updating (merging) the new changes on <code>main</code>.</p>
 <pre><code class="language-bash">echo "Hello engineering students!" &gt;&gt; hello.txt
 git add .
 git commit -m "Update hello.txt 2"
 </code></pre>
 <p>Now let's try to merge this.</p>
 <pre><code class="language-bash">$ git checkout main
-$ git merge darshan/feature-a
+$ git merge user/feature-a
 Auto-merging hello.txt
 CONFLICT (content): Merge conflict in hello.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -1093,7 +1130,7 @@ hello world
 Hello CSU
 =======
 Hello engineering students!
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; darshan/feature-a
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; user/feature-a
 </code></pre>
 <p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
 <p>For example, edit <code>hello.txt</code> like this:</p>
@@ -1107,8 +1144,8 @@ Hello engineering students
 git commit -m "Merge feature-a into main"
 </code></pre>
 <p><strong>Note:</strong> you can also use <code>git commit</code> without a commit message. It will then open an editor for you the write the commit message. once you save the message and exit the editor, git will make the commit.</p>
-<p>Afterwards, you may delete <code>darshan/feature-a</code>.</p>
-<pre><code class="language-bash">git branch -d darshan/feature-a
+<p>Afterwards, you may delete <code>user/feature-a</code>.</p>
+<pre><code class="language-bash">git branch -d user/feature-a
 </code></pre>
 <h2 id="remotes"><a class="header" href="#remotes">Remotes</a></h2>
 <p>First, make sure that you've created your repo through GitHub (see <a href="./ch2.2-create-github-account.html">Section 2.2</a>). Alternatively, you can create another GitHub repo (with no files) and then add it as a remote to your current repo.</p>
@@ -1149,6 +1186,31 @@ hint: invocation.
 <p>https://www.gitkraken.com/blog/vs-code-git</p>
 </li>
 </ul>
+<h3 id="git-best-practices"><a class="header" href="#git-best-practices">Git Best Practices</a></h3>
+<ul>
+<li>
+<p>Commit Often: Make small, frequent commits to capture your progress.</p>
+</li>
+<li>
+<p>Write Clear Commit Messages: Use descriptive messages that explain why a change was made, not just what changed.</p>
+</li>
+<li>
+<p>Use Branches: Create branches for features, fixes, and experiments to keep your main branch stable.</p>
+</li>
+<li>
+<p>Pull Before You Push: Always <code>git pull</code> before pushing.</p>
+</li>
+<li>
+<p>Review Changes Before Committing: Use <code>git status</code> and <code>git diff</code> to review your changes before you commit.</p>
+</li>
+<li>
+<p>Keep Repositories Small: Avoid adding large files or unnecessary dependencies.</p>
+</li>
+<li>
+<p>Use .gitignore: Exclude files that shouldn't be tracked (like build artifacts, log files, or secrets) by adding them to a <code>.gitignore</code> file.</p>
+</li>
+</ul>
+<p>https://www.w3schools.com/git/git_best_practices.asp</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cheat-sheet"><a class="header" href="#cheat-sheet">Cheat Sheet</a></h1>
 <h2 id="basic-linux-commands"><a class="header" href="#basic-linux-commands">Basic Linux Commands</a></h2>
 <h3 id="ssh-and-file-transfer"><a class="header" href="#ssh-and-file-transfer">SSH and File Transfer</a></h3>
@@ -1267,6 +1329,7 @@ hint: invocation.
             window.setTimeout(window.print, 100);
         });
         </script>
+
 
     </div>
     </body>

@@ -32,28 +32,41 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -67,7 +80,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -80,17 +94,20 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -117,13 +134,14 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -140,7 +158,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -219,8 +242,8 @@ Changes to be committed:
 <p><img src="./images/IMG_36D4CB635079-1.jpeg" alt="Drawing-0" /></p>
 <h3 id="creating-a-branch"><a class="header" href="#creating-a-branch">Creating a Branch</a></h3>
 <p>Let's create a new branch using this command:</p>
-<p><code>git checkout -b darshan/feature-a</code></p>
-<p>You should now be on the <code>darshan/feature-a</code> branch. You can check this by running the <code>git branch</code> command.</p>
+<p><code>git checkout -b user/feature-a</code></p>
+<p>You should now be on the <code>user/feature-a</code> branch. You can check this by running the <code>git branch</code> command.</p>
 <p>Next, let's add a change to this branch</p>
 <pre><code class="language-bash">echo "foo bar" &gt; foo.txt
 git add .
@@ -234,28 +257,28 @@ git commit -m "Add foo.txt"
 hello.txt
 </code></pre>
 <h3 id="merging-branches"><a class="header" href="#merging-branches">Merging Branches</a></h3>
-<p>To update the <code>main</code> branch with the changes from <code>darshan/feature-a</code>, run this command.</p>
-<pre><code class="language-bash">$ git merge darshan/feature-a
+<p>To update the <code>main</code> branch with the changes from <code>user/feature-a</code>, run this command.</p>
+<pre><code class="language-bash">$ git merge user/feature-a
 Updating f365571..0d24068
 Fast-forward
  foo.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 foo.txt
 </code></pre>
-<p>If the files modified in <code>main</code> and <code>darshan/feature-a</code> (after <code>darshan/feature-a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.</p>
+<p>If the files modified in <code>main</code> and <code>user/feature-a</code> (after <code>user/feature-a</code> was created or after the last merge) are mutually exclusive, then git should be able to do this automatically. However, if the same file was modified in both branches, you will encounter a merge conflict. Let's test this.</p>
 <p>First, we'll make a change on the <code>main</code> branch.</p>
 <pre><code class="language-bash">echo "Hello CSU" &gt;&gt; hello.txt # &gt;&gt; appends to an existing file
 git add .
 git commit -m "Update hello.txt"
 </code></pre>
-<p>Next, let's make a change on the <code>darshan/feature-a</code> branch without updating (merging) the new changes on <code>main</code>.</p>
+<p>Next, let's make a change on the <code>user/feature-a</code> branch without updating (merging) the new changes on <code>main</code>.</p>
 <pre><code class="language-bash">echo "Hello engineering students!" &gt;&gt; hello.txt
 git add .
 git commit -m "Update hello.txt 2"
 </code></pre>
 <p>Now let's try to merge this.</p>
 <pre><code class="language-bash">$ git checkout main
-$ git merge darshan/feature-a
+$ git merge user/feature-a
 Auto-merging hello.txt
 CONFLICT (content): Merge conflict in hello.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -267,7 +290,7 @@ hello world
 Hello CSU
 =======
 Hello engineering students!
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; darshan/feature-a
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; user/feature-a
 </code></pre>
 <p>To resolve this, replace the text above with the final desired version (it could be one or the other, or a combination of both). Once you've resolved all of the conflicts in (and saved) each file, stage the files and create a new commit. This completes the merge process.</p>
 <p>For example, edit <code>hello.txt</code> like this:</p>
@@ -281,8 +304,8 @@ Hello engineering students
 git commit -m "Merge feature-a into main"
 </code></pre>
 <p><strong>Note:</strong> you can also use <code>git commit</code> without a commit message. It will then open an editor for you the write the commit message. once you save the message and exit the editor, git will make the commit.</p>
-<p>Afterwards, you may delete <code>darshan/feature-a</code>.</p>
-<pre><code class="language-bash">git branch -d darshan/feature-a
+<p>Afterwards, you may delete <code>user/feature-a</code>.</p>
+<pre><code class="language-bash">git branch -d user/feature-a
 </code></pre>
 <h2 id="remotes"><a class="header" href="#remotes">Remotes</a></h2>
 <p>First, make sure that you've created your repo through GitHub (see <a href="./ch2.2-create-github-account.html">Section 2.2</a>). Alternatively, you can create another GitHub repo (with no files) and then add it as a remote to your current repo.</p>
@@ -323,6 +346,31 @@ hint: invocation.
 <p>https://www.gitkraken.com/blog/vs-code-git</p>
 </li>
 </ul>
+<h3 id="git-best-practices"><a class="header" href="#git-best-practices">Git Best Practices</a></h3>
+<ul>
+<li>
+<p>Commit Often: Make small, frequent commits to capture your progress.</p>
+</li>
+<li>
+<p>Write Clear Commit Messages: Use descriptive messages that explain why a change was made, not just what changed.</p>
+</li>
+<li>
+<p>Use Branches: Create branches for features, fixes, and experiments to keep your main branch stable.</p>
+</li>
+<li>
+<p>Pull Before You Push: Always <code>git pull</code> before pushing.</p>
+</li>
+<li>
+<p>Review Changes Before Committing: Use <code>git status</code> and <code>git diff</code> to review your changes before you commit.</p>
+</li>
+<li>
+<p>Keep Repositories Small: Avoid adding large files or unnecessary dependencies.</p>
+</li>
+<li>
+<p>Use .gitignore: Exclude files that shouldn't be tracked (like build artifacts, log files, or secrets) by adding them to a <code>.gitignore</code> file.</p>
+</li>
+</ul>
+<p>https://www.w3schools.com/git/git_best_practices.asp</p>
 
                     </main>
 
@@ -370,6 +418,7 @@ hint: invocation.
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>
