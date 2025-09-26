@@ -1149,7 +1149,10 @@ git commit -m "Merge feature-a into main"
 </code></pre>
 <h2 id="remotes"><a class="header" href="#remotes">Remotes</a></h2>
 <p>First, make sure that you've created your repo through GitHub (see <a href="./ch2.2-create-github-account.html">Section 2.2</a>). Alternatively, you can create another GitHub repo (with no files) and then add it as a remote to your current repo.</p>
-<p>More coming soon...</p>
+<p>Use the URL of the blank GitHub repository to set it as the remote destination for your local git-tracked repository:</p>
+<p><code>git remote add origin &lt;GitHub_Repository_URL&gt;</code></p>
+<p>Now, push your local commits to the main branch on GitHub, setting the upstream tracking reference.</p>
+<p><code>git push -u origin main</code></p>
 <h3 id="merging-branches-and-pull-requests"><a class="header" href="#merging-branches-and-pull-requests">Merging branches and Pull Requests</a></h3>
 <p>This is how you create a Pull Request for your branch on GitHub:</p>
 <ul>
