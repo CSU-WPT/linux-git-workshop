@@ -198,7 +198,13 @@ git branch -d user/feature-a
 
 First, make sure that you've created your repo through GitHub (see [Section 2.2](./ch2.2-create-github-account.md)). Alternatively, you can create another GitHub repo (with no files) and then add it as a remote to your current repo. 
 
-More coming soon...
+Use the URL of the blank GitHub repository to set it as the remote destination for your local git-tracked repository:
+
+`git remote add origin <GitHub_Repository_URL>`
+
+Now, push your local commits to the main branch on GitHub, setting the upstream tracking reference.
+
+`git push -u origin main`
 
 ### Merging branches and Pull Requests
 
