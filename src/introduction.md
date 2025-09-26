@@ -22,7 +22,7 @@ And for git:
 - Git in VSCode
 
 
-### Workshop Recording
+### Linux Workshop Recording
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QWRBvrbGeKw?si=ZfOsLCJIFIg2TuFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://youtu.be/CYBsi1-lU3A?si=ko6ESG8D9nKWqd4Z" title="Linux Workshop" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
