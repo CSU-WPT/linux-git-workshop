@@ -23,6 +23,5 @@ And for git:
 
 
 ### Linux Workshop Recording
-
-<iframe width="560" height="315" src="https://youtu.be/CYBsi1-lU3A?si=ko6ESG8D9nKWqd4Z" title="Linux Workshop" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://youtube.com/embed/CYBsi1-lU3A?si=ko6ESG8D9nKWqd4Z" title="Linux Workshop" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
